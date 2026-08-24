@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { ChevronDown, Zap } from "lucide-react";
+import NowIcon from "./NowIcon";
+import SparkleIcon from "./SparkleIcon";
+import CollapseButton from "./CollapseButton";
 
 const TABS: {
   id: string;
@@ -52,19 +54,13 @@ export default function TopPriorities() {
   const [active, setActive] = useState<string>("all");
 
   return (
-    <section className="flex h-full w-full flex-col items-center overflow-hidden rounded-[32px] border border-white bg-white/[0.33] px-2.5 py-6">
+    <section className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] bg-white/[0.33] px-2.5 py-6">
       <div className="flex w-full flex-col items-start px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
           <h2 className="text-xl tracking-[-0.2px] text-[#2e2e29]">
             Top Priorities
           </h2>
-          <button
-            type="button"
-            className="flex size-10 items-center justify-center rounded-full border border-[#edece9] bg-[#f6f5f3] shadow-sm hover:bg-[#f0efec]"
-            aria-label="Collapse"
-          >
-            <ChevronDown className="size-4 text-[#2e2e29]" strokeWidth={2} />
-          </button>
+          <CollapseButton bg="#f6f5f3" />
         </div>
 
         <div className="flex w-full flex-col items-center">
@@ -92,10 +88,10 @@ export default function TopPriorities() {
                     }`}
                   >
                     {tab.icon === "sparkle" && (
-                      <span className="text-[#68e353]">✦</span>
+                      <SparkleIcon className="size-3.5 text-[#68e353]" />
                     )}
                     {tab.icon === "lightning" && (
-                      <Zap className="size-3.5" strokeWidth={1.75} />
+                      <NowIcon icon="lightning-outline" size="sm" />
                     )}
                     <span>{tab.label}</span>
                     <span
@@ -113,7 +109,7 @@ export default function TopPriorities() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-start overflow-hidden rounded-3xl">
+      <div className="flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl">
         {ROWS.map((row, i) => (
           <div
             key={i}

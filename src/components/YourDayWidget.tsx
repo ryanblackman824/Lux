@@ -1,4 +1,5 @@
-import { ChevronDown, List } from "lucide-react";
+import NowIcon from "./NowIcon";
+import CollapseButton from "./CollapseButton";
 import calendarCheck from "../assets/calendar-check.svg";
 
 export default function YourDayWidget() {
@@ -15,13 +16,7 @@ export default function YourDayWidget() {
           <h2 className="flex-1 text-xl tracking-[-0.2px] text-black">
             Your Day
           </h2>
-          <button
-            type="button"
-            className="flex size-10 items-center justify-center rounded-full border border-[#edece9] bg-[#f7f7f7] shadow-sm hover:bg-[#f0efec]"
-            aria-label="Collapse"
-          >
-            <ChevronDown className="size-4 text-[#2e2e29]" strokeWidth={2} />
-          </button>
+          <CollapseButton />
         </div>
 
         <div className="flex w-full flex-col items-start pt-1.5">
@@ -51,7 +46,7 @@ export default function YourDayWidget() {
               </p>
             </div>
             <div className="flex w-full items-center justify-between">
-              <List className="size-5 text-[#2e2e29]" strokeWidth={1.75} />
+              <NowIcon icon="list-outline" size="md" className="text-[#2e2e29]" />
               <p className="flex-1 pl-3 text-sm text-[#4d4c4a]">
                 20&nbsp; total remaining
               </p>

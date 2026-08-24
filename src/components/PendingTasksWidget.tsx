@@ -17,7 +17,7 @@ function RequestPill() {
 export default function PendingTasksWidget() {
   return (
     <section
-      className="flex h-[340px] flex-1 flex-col items-start gap-2 rounded-[32px] border border-white p-6"
+      className="flex h-[340px] flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6"
       style={{
         backgroundImage:
           "linear-gradient(128deg, rgba(255,255,255,0) 75.6%, #fff 96.8%), linear-gradient(152deg, rgba(248,248,248,0.15) 11.7%, #f8f8f8 46.2%)",

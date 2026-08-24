@@ -24,7 +24,7 @@ export default function Home() {
 
         <NavRail />
 
-        <div className="relative flex w-full flex-col items-start pl-[70px]">
+        <div className="relative flex w-full flex-col items-start pl-[60px]">
           <Header />
 
           <div className="flex w-full items-start gap-2.5 pb-6">

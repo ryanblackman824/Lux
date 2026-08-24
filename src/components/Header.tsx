@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Pencil, Plus, Mic } from "lucide-react";
+import NowIcon from "./NowIcon";
+import SparkleIcon from "./SparkleIcon";
 
 export default function Header() {
   const [query, setQuery] = useState("");
@@ -12,7 +13,7 @@ export default function Header() {
           className="flex size-8 items-center justify-center rounded-lg bg-[#f9f8f6] hover:bg-[#f0efec]"
           aria-label="Edit"
         >
-          <Pencil className="size-4 text-[#535353]" strokeWidth={1.75} />
+          <NowIcon icon="pencil-outline" size="sm" className="text-[#535353]" />
         </button>
       </div>
 
@@ -20,12 +21,7 @@ export default function Header() {
         <div className="flex w-full max-w-[789px] flex-col items-center gap-1.5 p-2.5">
           <div className="flex w-full items-start justify-between pb-3 pl-2.5 pr-2.5">
             <div className="flex flex-1 items-center justify-end pt-[3px]">
-              <span
-                className="text-[26px] leading-none text-[#68e353]"
-                aria-hidden
-              >
-                ✦
-              </span>
+              <SparkleIcon className="size-8 text-[#68e353]" />
             </div>
             <div className="flex flex-1 min-w-[440px] items-center justify-center pl-2.5">
               <p className="text-[28px] tracking-[-0.28px] text-[#2e2e29]">
@@ -46,7 +42,7 @@ export default function Header() {
                     className="flex size-10 items-center justify-center rounded-full text-[#2e2e29] hover:bg-black/5"
                     aria-label="Add"
                   >
-                    <Plus className="size-5" strokeWidth={1.75} />
+                    <NowIcon icon="plus-outline" size="md" />
                   </button>
                   <input
                     value={query}
@@ -60,7 +56,7 @@ export default function Header() {
                   className="flex size-10 items-center justify-center rounded-full bg-[#68e353] px-3 text-[#2e2e29] hover:brightness-95"
                   aria-label="Voice input"
                 >
-                  <Mic className="size-4" strokeWidth={2} />
+                  <NowIcon icon="microphone-fill" size="md" />
                 </button>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import CollapseButton from "./CollapseButton";
 
 const CASES = [
   {
@@ -38,7 +38,7 @@ function SeverityPill() {
 export default function UnassignedCasesWidget() {
   return (
     <section
-      className="flex w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-2"
+      className="flex h-[556px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-2"
       style={{
         backgroundImage:
           "linear-gradient(134deg, rgba(255,255,255,0) 75.6%, #fff 96.8%), linear-gradient(157deg, rgba(248,248,248,0.15) 11.7%, #f8f8f8 46.2%)",
@@ -52,17 +52,11 @@ export default function UnassignedCasesWidget() {
           2
         </span>
         <div className="flex flex-1 items-center justify-end">
-          <button
-            type="button"
-            className="flex size-10 items-center justify-center rounded-full border border-[#edece9] bg-[#f7f7f7] shadow-sm hover:bg-[#f0efec]"
-            aria-label="Collapse"
-          >
-            <ChevronDown className="size-4 text-[#2e2e29]" strokeWidth={2} />
-          </button>
+          <CollapseButton />
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-start gap-4 p-4">
+      <div className="flex w-full min-h-0 flex-1 flex-col items-start gap-4 overflow-y-auto p-4">
         {CASES.map((c, i) => (
           <div key={i} className="flex w-full flex-col items-start gap-2">
             <div className="flex w-full items-center gap-2">
