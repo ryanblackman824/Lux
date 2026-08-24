@@ -132,12 +132,9 @@ function ModuleRow({
   );
 }
 
-function ExpandedNav({ onCollapse }: { onCollapse: () => void }) {
+function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
   return (
-    <nav
-      className="absolute left-0 top-0 z-10 flex h-full w-[260px] flex-col border-r border-white bg-white/[0.33] pb-1 pl-1.5 pr-1.5 pt-2.5 backdrop-blur-[20px]"
-      aria-label="Primary expanded"
-    >
+    <div className="absolute left-0 top-0 flex h-full w-[260px] flex-col border-r border-white pb-1 pl-1.5 pr-1.5 pt-2.5">
       <div className="flex h-full w-full flex-1 flex-col rounded-[24px]">
         <div className="flex w-full flex-col gap-4">
           <div className="flex w-full items-center gap-1 pl-1">
@@ -257,16 +254,13 @@ function ExpandedNav({ onCollapse }: { onCollapse: () => void }) {
           </div>
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 
-function CollapsedNav({ onExpand }: { onExpand: () => void }) {
+function CollapsedContent({ onExpand }: { onExpand: () => void }) {
   return (
-    <nav
-      className="absolute left-0 top-0 z-10 flex h-full w-[60px] items-start justify-center gap-2 bg-white/[0.33] pb-2 pl-1.5 pr-1.5 pt-2.5 backdrop-blur-[20px]"
-      aria-label="Primary"
-    >
+    <div className="absolute left-0 top-0 flex h-full w-[60px] items-start justify-center gap-2 pb-2 pl-1.5 pr-1.5 pt-2.5">
       <div className="isolate flex h-full w-12 flex-col items-center gap-1.5 rounded-3xl">
         {/* Logo */}
         <button
@@ -373,16 +367,34 @@ function CollapsedNav({ onExpand }: { onExpand: () => void }) {
           </span>
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 
 export default function NavRail() {
   const [expanded, setExpanded] = useState(false);
 
-  return expanded ? (
-    <ExpandedNav onCollapse={() => setExpanded(false)} />
-  ) : (
-    <CollapsedNav onExpand={() => setExpanded(true)} />
+  return (
+    <nav
+      className={`absolute left-0 top-0 z-10 h-full overflow-hidden bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        expanded ? "w-[260px]" : "w-[60px]"
+      }`}
+      aria-label="Primary"
+    >
+      <div
+        className={`transition-opacity duration-150 ease-out ${
+          expanded ? "pointer-events-none opacity-0" : "opacity-100"
+        }`}
+      >
+        <CollapsedContent onExpand={() => setExpanded(true)} />
+      </div>
+      <div
+        className={`transition-opacity delay-150 duration-200 ease-out ${
+          expanded ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <ExpandedContent onCollapse={() => setExpanded(false)} />
+      </div>
+    </nav>
   );
 }
