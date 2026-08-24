@@ -1,4 +1,5 @@
 import CollapseButton from "./CollapseButton";
+import Pill from "./Pill";
 import calendarCheck from "../assets/calendar-check.svg";
 import listIcon from "../assets/list.svg";
 
@@ -25,9 +26,7 @@ export default function YourDayWidget() {
         </div>
 
         <div className="flex w-full flex-col items-start gap-2.5 pt-1">
-          <span className="rounded-[4px] border border-[#c5c5ff] bg-[#dddeff] px-2 py-0.5 text-xs tracking-[-0.12px] text-[#422e91]">
-            5/13 completed
-          </span>
+          <Pill tone="green">5/13 completed</Pill>
           <div className="h-[13px] w-full overflow-hidden rounded-full bg-white">
             <div
               className="h-full rounded-full bg-[#7b6ff0]"

@@ -1,39 +1,44 @@
 import CollapseButton from "./CollapseButton";
+import Pill, { type PillTone } from "./Pill";
 
-const CASES = [
+const CASES: {
+  id: string;
+  pills: { tone: PillTone; label: string }[];
+  title: string;
+  description: string;
+}[] = [
   {
     id: "TASK000428",
+    pills: [
+      { tone: "red", label: "Due Tomorrow" },
+      { tone: "amber", label: "2 - High" },
+    ],
     title: "Executive laptop replacement request",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
   },
   {
     id: "TASK000428",
+    pills: [{ tone: "red", label: "2 - High" }],
     title: "Executive laptop replacement request",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
   },
   {
     id: "TASK000428",
+    pills: [{ tone: "red", label: "2 - High" }],
     title: "Executive laptop replacement request",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
   },
   {
     id: "TASK000428",
+    pills: [{ tone: "red", label: "2 - High" }],
     title: "Executive laptop replacement request",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
   },
 ];
-
-function SeverityPill() {
-  return (
-    <span className="whitespace-nowrap rounded-[4px] border border-[#ffb8ad] bg-[#ffd8d0] px-2 py-0.5 text-xs tracking-[-0.12px] text-[#750000]">
-      2 - High
-    </span>
-  );
-}
 
 export default function UnassignedCasesWidget() {
   return (
@@ -60,7 +65,11 @@ export default function UnassignedCasesWidget() {
         {CASES.map((c, i) => (
           <div key={i} className="flex w-full flex-col items-start gap-2">
             <div className="flex w-full items-center gap-2">
-              <SeverityPill />
+              {c.pills.map((pill, j) => (
+                <Pill key={j} tone={pill.tone}>
+                  {pill.label}
+                </Pill>
+              ))}
               <span className="whitespace-nowrap text-xs text-[#656462]">
                 {c.id}
               </span>

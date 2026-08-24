@@ -1,17 +1,10 @@
 import Button from "./Button";
+import Pill from "./Pill";
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span className="flex size-6 items-center justify-center rounded-full bg-white text-sm tracking-[-0.14px] text-[#535353]">
       {children}
-    </span>
-  );
-}
-
-function RequestPill() {
-  return (
-    <span className="whitespace-nowrap rounded-[4px] border border-[#c5c5ff] bg-[#dddeff] px-2 py-0.5 text-xs tracking-[-0.12px] text-[#37228a]">
-      Requested 2 days ago
     </span>
   );
 }
@@ -34,7 +27,7 @@ export default function PendingTasksWidget() {
 
       <div className="flex w-full flex-col items-start gap-2.5">
         <div className="flex w-full items-center gap-2">
-          <RequestPill />
+          <Pill tone="blue">Requested 2 days ago</Pill>
           <span className="text-xs tracking-[-0.12px] text-[#4d4c4a]">
             Approval
           </span>
@@ -53,7 +46,7 @@ export default function PendingTasksWidget() {
 
       <div className="flex w-full flex-col items-center gap-2.5 pt-2.5">
         <div className="flex w-full items-start gap-2 opacity-30">
-          <RequestPill />
+          <Pill tone="blue">Requested 2 days ago</Pill>
           <span className="text-xs tracking-[-0.12px] text-[#4d4c4a]">
             Approval
           </span>

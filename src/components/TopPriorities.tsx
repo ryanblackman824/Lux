@@ -1,8 +1,11 @@
 import { useState } from "react";
 import SparkleIcon from "./SparkleIcon";
 import CollapseButton from "./CollapseButton";
-import lightningIcon from "../assets/lightning.svg";
 import Button from "./Button";
+import Pill, { type PillTone } from "./Pill";
+import NowIcon from "./NowIcon";
+import lightningIcon from "../assets/lightning.svg";
+import sparkleTest from "../assets/sn-sparkmoji-logo-test.svg";
 
 const TABS: {
   id: string;
@@ -15,47 +18,69 @@ const TABS: {
   { id: "quick", label: "Quick resolutions", count: 2, icon: "lightning" },
 ];
 
-const ROWS = [
+const AI_BANNER_TEXT =
+  "A new P0 database incident has been reassigned to you. Tackle this first then, move on to the high priority incident that has exceeded its threshold for 2 days. ";
+
+const FILTERS = ["Type", "Department"];
+
+type Row = {
+  id: string;
+  pills: { tone: PillTone; label: string }[];
+  title: string;
+  description: string;
+  button: { label: string; variant: "primary" | "secondary"; chevron?: boolean };
+};
+
+const ROWS: Row[] = [
   {
-    id: "TASK000428",
+    id: "INC0012993",
+    pills: [
+      { tone: "red", label: "SLA Breach in 1 hr" },
+      { tone: "red", label: "2 - High" },
+    ],
     title: "Server performance degradation",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
+    button: { label: "Open", variant: "primary" },
+  },
+  {
+    id: "INC0012861",
+    pills: [
+      { tone: "yellow", label: "Threshold exceeded for 2 days" },
+      { tone: "amber", label: "2 - High" },
+    ],
+    title: "Server performance degradation",
+    description:
+      "Response time has exceeded threshold for 2 days and may need your escalation.",
+    button: { label: "Follow Up", variant: "primary", chevron: true },
   },
   {
     id: "TASK000428",
+    pills: [
+      { tone: "red", label: "2 - High" },
+      { tone: "red", label: "2 - High" },
+    ],
     title: "Server performance degradation",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
+    button: { label: "Assigned to me", variant: "primary" },
   },
   {
     id: "TASK000428",
+    pills: [{ tone: "red", label: "2 - High" }],
     title: "Server performance degradation",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
-  },
-  {
-    id: "TASK000428",
-    title: "Server performance degradation",
-    description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
+    button: { label: "Assigned to me", variant: "primary" },
   },
 ];
-
-function SeverityPill() {
-  return (
-    <span className="whitespace-nowrap rounded-[4px] border border-[#ffb8ad] bg-[#ffd8d0] px-2 py-0.5 text-xs tracking-[-0.12px] text-[#750000]">
-      2 - High
-    </span>
-  );
-}
 
 export default function TopPriorities() {
   const [active, setActive] = useState<string>("all");
 
   return (
     <section className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] bg-white/[0.33] px-2.5 py-6">
-      <div className="flex w-full flex-col items-start px-3.5">
+      <div className="flex w-full flex-col items-start pb-4 px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
           <h2 className="text-xl tracking-[-0.2px] text-[#2e2e29]">
             Top Priorities
@@ -64,14 +89,6 @@ export default function TopPriorities() {
         </div>
 
         <div className="flex w-full flex-col items-center">
-          <div className="mb-1 flex w-full flex-col items-start pb-4 pr-2.5">
-            <div className="flex items-center gap-2 text-xs text-[#656462]">
-              <span>Curated by AI every 2 hours</span>
-              <span>&bull;</span>
-              <span>Refreshed just now</span>
-            </div>
-          </div>
-
           <div className="flex w-full flex-col items-start justify-center pb-4 pr-2.5">
             <div className="flex items-center gap-1.5 rounded-full border border-white p-1.5">
               {TABS.map((tab) => {
@@ -106,20 +123,70 @@ export default function TopPriorities() {
               })}
             </div>
           </div>
+
+          <div className="flex w-full items-center gap-2 pr-2.5 text-xs text-[#656462]">
+            <span>Curated by AI every 2 hours</span>
+            <span>&bull;</span>
+            <span>Refreshed just now</span>
+          </div>
         </div>
       </div>
 
-      <div className="flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl">
+      <div
+        className="mb-4 flex w-full items-center gap-3 rounded-2xl border border-white px-[15px] py-[11px]"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, rgba(255,255,255,0.45) 2.5%, rgba(255,255,255,0) 95.8%)",
+        }}
+      >
+        <img src={sparkleTest} alt="" className="size-5 shrink-0" />
+        <p className="text-xs text-black">{AI_BANNER_TEXT}</p>
+      </div>
+
+      <div className="flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white">
+        <div className="flex w-full items-center gap-2 px-6 pt-6">
+          <div className="flex flex-1 items-center gap-2">
+            {FILTERS.map((filter) => (
+              <span
+                key={filter}
+                className="flex h-6 items-center gap-2 rounded-full border border-[#c2c1be] pl-3 pr-2.5 text-xs tracking-[-0.12px] text-[#4d4c4a]"
+              >
+                {filter}
+                <NowIcon icon="close-outline" size="xs" />
+              </span>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <NowIcon
+              icon="arrow-up-down-outline"
+              size="sm"
+              className="text-[#656462]"
+            />
+            <span className="text-sm tracking-[-0.14px] text-[#656462]">
+              AI Ranking
+            </span>
+            <NowIcon
+              icon="chevron-down-outline"
+              size="sm"
+              className="text-[#656462]"
+            />
+          </div>
+        </div>
+
         {ROWS.map((row, i) => (
           <div
             key={i}
-            className={`flex w-full flex-col items-start border-b border-[#edece9] bg-white p-6 ${
-              i === 0 ? "rounded-t-3xl" : ""
-            } ${i === ROWS.length - 1 ? "rounded-b-3xl" : ""}`}
+            className={`flex w-full flex-col items-start border-b border-[#edece9] p-6 ${
+              i === ROWS.length - 1 ? "rounded-b-3xl" : ""
+            }`}
           >
             <div className="flex w-full flex-col items-start gap-3">
               <div className="flex w-full items-center gap-2">
-                <SeverityPill />
+                {row.pills.map((pill, j) => (
+                  <Pill key={j} tone={pill.tone}>
+                    {pill.label}
+                  </Pill>
+                ))}
                 <span className="whitespace-nowrap text-xs text-[#656462]">
                   {row.id}
                 </span>
@@ -130,8 +197,11 @@ export default function TopPriorities() {
                   <p className="flex-1 text-sm text-[#4d4c4a]">
                     {row.description}
                   </p>
-                  <Button variant="primary" className="shrink-0">
-                    Assigned to me
+                  <Button variant={row.button.variant} className="shrink-0">
+                    {row.button.label}
+                    {row.button.chevron && (
+                      <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
+                    )}
                   </Button>
                 </div>
               </div>
