@@ -18,7 +18,7 @@ export default function Header() {
       </div>
 
       <div className="flex w-full flex-col items-center justify-center px-2.5 pb-[50px]">
-        <div className="flex w-full max-w-[789px] flex-col items-center gap-1.5 p-2.5">
+        <div className="flex h-[139px] w-[789px] flex-col items-center justify-center gap-2.5 p-2.5">
           <div className="flex w-full items-start justify-between pb-3 pl-2.5 pr-2.5">
             <div className="flex flex-1 items-center justify-end pt-[3px]">
               <SparkleIcon className="size-8 text-[#68e353]" />
