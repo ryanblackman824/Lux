@@ -118,29 +118,29 @@ export default function NavRail() {
             </button>
             <div className="flex flex-col items-center gap-1.5 pb-1.5 pl-1 pr-1">
               <L1ModuleIcon>
-                <img src={dashboardDialIcon} alt="" className="size-3" />
+                <img src={dashboardDialIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={lightningIcon} alt="" className="size-3" />
+                <img src={lightningIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={clipboardIcon} alt="" className="size-3" />
+                <img src={clipboardIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon>
-                <img src={inventoryIcon} alt="" className="size-3" />
+                <img src={inventoryIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={buildingIcon} alt="" className="size-3" />
+                <img src={buildingIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
                   icon="lightbulb-outline"
-                  size="xs"
+                  size="sm"
                   className="text-[#2e2e29]"
                 />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={gearIcon} alt="" className="size-3" />
+                <img src={gearIcon} alt="" className="size-4" />
               </L1ModuleIcon>
             </div>
           </div>
