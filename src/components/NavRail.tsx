@@ -20,10 +20,10 @@ import appTile from "../assets/csm-app-tile.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 import wordmark from "../assets/nav-logo-wordmark.svg";
 import panelCollapse from "../assets/panel-display-left-collapse.svg";
-import gridIcon from "../assets/nav-grid.svg";
 import stopwatchIcon from "../assets/nav-stopwatch.svg";
 import chartBarIcon from "../assets/nav-chart-bar.svg";
 import ongoingIcon from "../assets/nav-ongoing.svg";
+import tabsetIcon from "../assets/nav-tabset.svg";
 
 function GlobalItem({
   children,
@@ -97,18 +97,6 @@ function ExpandedItem({
   );
 }
 
-function ChildItem({ icon, label }: { icon: string; label: string }) {
-  return (
-    <button
-      type="button"
-      className="flex h-8 w-full items-center gap-3 rounded-2xl px-2 text-left hover:bg-black/5"
-    >
-      <img src={icon} alt="" className="size-4" />
-      <span className="flex-1 text-sm text-black">{label}</span>
-    </button>
-  );
-}
-
 function ModuleRow({
   icon,
   label,
@@ -156,37 +144,44 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
             <ExpandedItem icon={sparkleTest} label="Ask Otto" />
             <ExpandedItem icon={searchIcon} label="Search" />
             <ExpandedItem icon={bellIcon} label="Notifications" badge="12" />
-            <div className="flex w-full flex-col">
-              <button
-                type="button"
-                className="flex h-9 w-full items-center gap-1.5 rounded-lg px-2.5 hover:bg-black/5"
-              >
-                <img src={compassIcon} alt="" className="size-5" />
-                <span className="flex-1 text-left text-sm text-black">
-                  Browse
-                </span>
-                <NowIcon icon="chevron-up-outline" size="xs" className="text-[#2e2e29]" />
-              </button>
-              <div className="flex w-full flex-col gap-0 pb-1.5 pl-7">
-                <ChildItem icon={gridIcon} label="Navigate to" />
-                <div className="flex h-8 w-full items-center gap-3 px-2 text-left">
-                  <NowIcon icon="star-outline" size="xs" className="text-[#2e2e29]" />
-                  <span className="flex-1 text-sm text-black">Favourites</span>
-                </div>
-                <div className="flex h-8 w-full items-center gap-3 px-2 text-left">
-                  <NowIcon icon="change-outline" size="xs" className="text-[#2e2e29]" />
-                  <span className="flex-1 text-sm text-black">History</span>
-                </div>
-              </div>
-            </div>
+            <button
+              type="button"
+              className="flex h-9 w-full items-center gap-1.5 rounded-lg px-2.5 hover:bg-black/5"
+            >
+              <img src={compassIcon} alt="" className="size-5" />
+              <span className="flex-1 text-left text-sm text-black">
+                Browse
+              </span>
+              <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
+            </button>
           </div>
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto pt-4">
-          <p className="px-2.5 pb-0.5 text-xs text-[#656462]">Your pinned</p>
+          <div className="border-b border-[#e3e2df] pb-0.5">
+            <button
+              type="button"
+              className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
+            >
+              <img src={tabsetIcon} alt="" className="size-5" />
+              <span className="flex-1 text-left text-sm text-black">
+                Your pinned
+              </span>
+              <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
+            </button>
+          </div>
 
           <div className="flex flex-col gap-2 pt-3">
-            <p className="px-2.5 text-xs text-[#656462]">Active apps</p>
+            <button
+              type="button"
+              className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
+            >
+              <img src={tabsetIcon} alt="" className="size-5" />
+              <span className="flex-1 text-left text-sm text-black">
+                Active apps
+              </span>
+              <NowIcon icon="chevron-up-outline" size="xs" className="text-[#2e2e29]" />
+            </button>
             <div className="px-2">
               <div className="w-full overflow-hidden rounded-2xl bg-white">
                 <div className="flex items-center gap-2 px-2.5 py-2">
