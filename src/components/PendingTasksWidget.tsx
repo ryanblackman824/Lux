@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span className="flex size-6 items-center justify-center rounded-full bg-white text-sm tracking-[-0.14px] text-[#535353]">
@@ -44,12 +46,9 @@ export default function PendingTasksWidget() {
           The change window begins tomorrow and all required reviews are
           complete.
         </p>
-        <button
-          type="button"
-          className="flex h-8 w-full items-center justify-center rounded-full border border-[#2e2e29] text-xs text-black hover:bg-black/5"
-        >
+        <Button variant="secondary" className="w-full">
           Approve
-        </button>
+        </Button>
       </div>
 
       <div className="flex w-full flex-col items-center gap-2.5 pt-2.5">

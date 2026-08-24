@@ -10,7 +10,7 @@ export default function Header() {
       <div className="flex w-full justify-end">
         <button
           type="button"
-          className="flex size-8 items-center justify-center rounded-lg bg-[#f9f8f6] hover:bg-[#f0efec]"
+          className="flex size-8 items-center justify-center rounded-lg bg-[#f9f8f6] hover:bg-white"
           aria-label="Edit"
         >
           <NowIcon icon="pencil-outline" size="sm" className="text-[#535353]" />

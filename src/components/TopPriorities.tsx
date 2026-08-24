@@ -2,6 +2,7 @@ import { useState } from "react";
 import NowIcon from "./NowIcon";
 import SparkleIcon from "./SparkleIcon";
 import CollapseButton from "./CollapseButton";
+import Button from "./Button";
 
 const TABS: {
   id: string;
@@ -38,7 +39,6 @@ const ROWS = [
     title: "Server performance degradation",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
-    outlined: true,
   },
 ];
 
@@ -130,16 +130,9 @@ export default function TopPriorities() {
                   <p className="flex-1 text-sm text-[#4d4c4a]">
                     {row.description}
                   </p>
-                  <button
-                    type="button"
-                    className={`h-8 shrink-0 whitespace-nowrap rounded-full px-6 text-xs text-white ${
-                      row.outlined
-                        ? "border border-transparent bg-[#232320]"
-                        : "bg-[#232320]"
-                    }`}
-                  >
+                  <Button variant="primary" className="shrink-0">
                     Assigned to me
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
