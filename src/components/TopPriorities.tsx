@@ -1,7 +1,7 @@
 import { useState } from "react";
-import NowIcon from "./NowIcon";
 import SparkleIcon from "./SparkleIcon";
 import CollapseButton from "./CollapseButton";
+import lightningIcon from "../assets/lightning.svg";
 import Button from "./Button";
 
 const TABS: {
@@ -88,10 +88,10 @@ export default function TopPriorities() {
                     }`}
                   >
                     {tab.icon === "sparkle" && (
-                      <SparkleIcon className="size-3.5 text-[#68e353]" />
+                      <SparkleIcon className="size-4 text-[#68e353]" />
                     )}
                     {tab.icon === "lightning" && (
-                      <NowIcon icon="lightning-outline" size="sm" />
+                      <img src={lightningIcon} alt="" className="size-4" />
                     )}
                     <span>{tab.label}</span>
                     <span

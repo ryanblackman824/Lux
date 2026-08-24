@@ -1,6 +1,6 @@
-import NowIcon from "./NowIcon";
 import CollapseButton from "./CollapseButton";
 import calendarCheck from "../assets/calendar-check.svg";
+import listIcon from "../assets/list.svg";
 
 export default function YourDayWidget() {
   return (
@@ -46,7 +46,7 @@ export default function YourDayWidget() {
               </p>
             </div>
             <div className="flex w-full items-center justify-between">
-              <NowIcon icon="list-outline" size="md" className="text-[#2e2e29]" />
+              <img src={listIcon} alt="" className="size-5" />
               <p className="flex-1 pl-3 text-sm text-[#4d4c4a]">
                 20&nbsp; total remaining
               </p>

@@ -1,9 +1,21 @@
 import NowIcon from "./NowIcon";
 import navVector from "../assets/nav-vector.svg";
 import divider from "../assets/divider.svg";
-import navItem2 from "../assets/nav-item2.svg";
+import sparkleTest from "../assets/sn-sparkmoji-logo-test.svg";
 import navFolder from "../assets/nav-folder.svg";
-import navGauge from "../assets/nav-module1-gauge.svg";
+import homeIcon from "../assets/home.svg";
+import searchIcon from "../assets/magnifying-glass.svg";
+import bellIcon from "../assets/bell.svg";
+import compassIcon from "../assets/compass.svg";
+import dashboardDialIcon from "../assets/dashboard-dial.svg";
+import lightningIcon from "../assets/lightning.svg";
+import clipboardIcon from "../assets/clipboard-lines.svg";
+import inventoryIcon from "../assets/inventory.svg";
+import buildingIcon from "../assets/building.svg";
+import gearIcon from "../assets/gear.svg";
+import plusIcon from "../assets/plus.svg";
+import ellipsisIcon from "../assets/ellipsis-v.svg";
+import appTile from "../assets/csm-app-tile.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 
 function GlobalItem({
@@ -64,28 +76,24 @@ export default function NavRail() {
         {/* Global items */}
         <div className="flex w-full flex-col items-center gap-0.5 rounded-2xl">
           <GlobalItem active>
-            <NowIcon icon="home-outline" size="md" className="text-[#2e2e29]" />
+            <img src={homeIcon} alt="" className="size-5" />
           </GlobalItem>
           <GlobalItem>
-            <img src={navItem2} alt="" className="size-5" />
+            <img src={sparkleTest} alt="" className="size-5" />
           </GlobalItem>
           <GlobalItem>
-            <NowIcon
-              icon="magnifying-glass-outline"
-              size="md"
-              className="text-[#2e2e29]"
-            />
+            <img src={searchIcon} alt="" className="size-5" />
           </GlobalItem>
           <GlobalItem>
             <span className="relative">
-              <NowIcon icon="bell-outline" size="md" className="text-[#2e2e29]" />
+              <img src={bellIcon} alt="" className="size-5" />
               <span className="absolute -right-2.5 -top-1.5 flex size-[18px] items-center justify-center rounded-full bg-[#ffd8d0] text-[10px] font-bold leading-none text-[#750000]">
                 12
               </span>
             </span>
           </GlobalItem>
           <GlobalItem>
-            <NowIcon icon="compass-outline" size="md" className="text-[#2e2e29]" />
+            <img src={compassIcon} alt="" className="size-5" />
           </GlobalItem>
         </div>
 
@@ -106,37 +114,23 @@ export default function NavRail() {
               className="flex h-10 items-center justify-center rounded-xl px-2.5 py-2"
               aria-label="CSM app"
             >
-              <span className="flex size-6 items-center justify-center rounded-md bg-gradient-to-b from-[#114598] to-[#2a6edc] text-[8px] font-medium leading-none text-white">
-                CSM
-              </span>
+              <img src={appTile} alt="CSM" className="size-6" />
             </button>
             <div className="flex flex-col items-center gap-1.5 pb-1.5 pl-1 pr-1">
               <L1ModuleIcon>
-                <img src={navGauge} alt="" className="h-2.5 w-3.5" />
+                <img src={dashboardDialIcon} alt="" className="size-3" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon
-                  icon="lightning-outline"
-                  size="xs"
-                  className="text-[#2e2e29]"
-                />
+                <img src={lightningIcon} alt="" className="size-3" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon
-                  icon="clipboard-lines-outline"
-                  size="xs"
-                  className="text-[#2e2e29]"
-                />
+                <img src={clipboardIcon} alt="" className="size-3" />
               </L1ModuleIcon>
               <L1ModuleIcon>
-                <NowIcon icon="toolbox-outline" size="xs" className="text-[#2e2e29]" />
+                <img src={inventoryIcon} alt="" className="size-3" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon
-                  icon="building-outline"
-                  size="xs"
-                  className="text-[#2e2e29]"
-                />
+                <img src={buildingIcon} alt="" className="size-3" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
@@ -146,7 +140,7 @@ export default function NavRail() {
                 />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="gear-outline" size="xs" className="text-[#2e2e29]" />
+                <img src={gearIcon} alt="" className="size-3" />
               </L1ModuleIcon>
             </div>
           </div>
@@ -155,18 +149,14 @@ export default function NavRail() {
             className="mt-1 flex size-8 items-center justify-center rounded-full border border-[#2e2e29]/20 hover:bg-black/5"
             aria-label="Add app"
           >
-            <NowIcon icon="plus-outline" size="sm" className="text-[#2e2e29]" />
+            <img src={plusIcon} alt="" className="size-4" />
           </button>
         </div>
 
         {/* Sticky footer */}
         <div className="flex w-full flex-col items-center gap-2 border-t border-[#edece9] pt-2">
           <GlobalItem>
-            <NowIcon
-              icon="ellipsis-v-outline"
-              size="sm"
-              className="text-[#2e2e29]"
-            />
+            <img src={ellipsisIcon} alt="" className="size-4" />
           </GlobalItem>
           <span className="relative">
             <img

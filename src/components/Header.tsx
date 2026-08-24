@@ -1,6 +1,8 @@
 import { useState } from "react";
 import NowIcon from "./NowIcon";
 import SparkleIcon from "./SparkleIcon";
+import pencilIcon from "../assets/pencil.svg";
+import plusIcon from "../assets/plus.svg";
 
 export default function Header() {
   const [query, setQuery] = useState("");
@@ -13,7 +15,7 @@ export default function Header() {
           className="flex size-8 items-center justify-center rounded-lg bg-[#f9f8f6] hover:bg-white"
           aria-label="Edit"
         >
-          <NowIcon icon="pencil-outline" size="sm" className="text-[#535353]" />
+          <img src={pencilIcon} alt="" className="size-4" />
         </button>
       </div>
 
@@ -45,7 +47,7 @@ export default function Header() {
                     className="flex size-10 items-center justify-center rounded-full text-[#2e2e29] hover:bg-black/5"
                     aria-label="Add"
                   >
-                    <NowIcon icon="plus-outline" size="md" />
+                    <img src={plusIcon} alt="" className="size-4" />
                   </button>
                   <input
                     value={query}
