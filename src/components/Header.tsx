@@ -19,15 +19,11 @@ export default function Header() {
 
       <div className="flex w-full flex-col items-center justify-center px-2.5 pb-[50px]">
         <div className="flex h-[139px] w-[789px] flex-col items-center justify-center gap-2.5 p-2.5">
-          <div className="flex w-full items-start justify-between pb-3 pl-2.5 pr-2.5">
-            <div className="flex flex-1 items-center justify-end pt-[3px]">
-              <SparkleIcon className="size-8 text-[#68e353]" />
-            </div>
-            <div className="flex flex-1 min-w-[440px] items-center justify-center pl-2.5">
-              <p className="text-[28px] tracking-[-0.28px] text-[#2e2e29]">
-                Let&rsquo;s get started on your day, Alex
-              </p>
-            </div>
+          <div className="flex w-full items-center justify-center gap-2.5 pb-3">
+            <SparkleIcon className="size-8 shrink-0 text-[#68e353]" />
+            <p className="text-[28px] tracking-[-0.28px] text-[#2e2e29]">
+              Let&rsquo;s get started on your day, Alex
+            </p>
           </div>
 
           <form
