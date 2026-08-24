@@ -17,12 +17,12 @@ export default function Home() {
           <img
             src={blueGlow}
             alt=""
-            className="pointer-events-none absolute left-[125px] top-[-107px] w-[1086px]"
+            className="pointer-events-none absolute left-[125px] top-[-107px] -z-10 w-[1086px]"
           />
           <img
             src={ellipseGlow}
             alt=""
-            className="pointer-events-none absolute left-[14px] top-[-92px] w-[1372px]"
+            className="pointer-events-none absolute left-[14px] top-[-92px] -z-10 w-[1372px]"
           />
 
           <Header />
