@@ -5,7 +5,6 @@ import Button from "./Button";
 import Pill, { type PillTone } from "./Pill";
 import NowIcon from "./NowIcon";
 import lightningIcon from "../assets/lightning.svg";
-import sparkleTest from "../assets/sn-sparkmoji-logo-test.svg";
 
 const TABS: {
   id: string;
@@ -161,7 +160,7 @@ export default function TopPriorities() {
             "linear-gradient(90deg, rgba(255,255,255,0.45) 2.5%, rgba(255,255,255,0) 95.8%)",
         }}
       >
-        <img src={sparkleTest} alt="" className="size-5 shrink-0" />
+        <SparkleIcon className="size-5 shrink-0 text-black" />
         <p className="text-xs text-black">{AI_BANNER_TEXT}</p>
       </div>
 
