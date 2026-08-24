@@ -9,8 +9,8 @@ import ellipseGlow from "../assets/ellipse-glow.svg";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-[#edece9]">
-      <main className="relative mx-auto flex min-h-screen w-full max-w-[1440px] flex-col items-start overflow-hidden px-6">
+    <div className="flex min-h-screen w-full items-center justify-center bg-[#dcdbd7] p-10">
+      <main className="relative flex h-[819px] w-[1440px] flex-col items-start overflow-hidden border border-black/10 bg-[#edece9] px-6">
         <img
           src={blueGlow}
           alt=""
