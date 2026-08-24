@@ -117,36 +117,36 @@ export default function NavRail() {
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
                   icon="lightning-outline"
-                  size="sm"
+                  size="xs"
                   className="text-[#2e2e29]"
                 />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
                   icon="clipboard-lines-outline"
-                  size="sm"
+                  size="xs"
                   className="text-[#2e2e29]"
                 />
               </L1ModuleIcon>
               <L1ModuleIcon>
-                <NowIcon icon="toolbox-outline" size="sm" className="text-[#2e2e29]" />
+                <NowIcon icon="toolbox-outline" size="xs" className="text-[#2e2e29]" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
                   icon="building-outline"
-                  size="sm"
+                  size="xs"
                   className="text-[#2e2e29]"
                 />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
                   icon="lightbulb-outline"
-                  size="sm"
+                  size="xs"
                   className="text-[#2e2e29]"
                 />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="gear-outline" size="sm" className="text-[#2e2e29]" />
+                <NowIcon icon="gear-outline" size="xs" className="text-[#2e2e29]" />
               </L1ModuleIcon>
             </div>
           </div>
