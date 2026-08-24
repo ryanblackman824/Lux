@@ -12,7 +12,7 @@ export default function CollapseButton({
       style={{ backgroundColor: bg }}
       aria-label="Collapse"
     >
-      <img src={chevronRight} alt="" className="size-4" />
+      <img src={chevronRight} alt="" className="size-5" />
     </button>
   );
 }
