@@ -376,7 +376,7 @@ export default function NavRail() {
 
   return (
     <nav
-      className={`absolute left-0 top-0 z-10 h-full overflow-hidden bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
         expanded ? "w-[260px]" : "w-[60px]"
       }`}
       aria-label="Primary"

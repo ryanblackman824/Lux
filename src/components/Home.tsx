@@ -9,22 +9,22 @@ import ellipseGlow from "../assets/ellipse-glow.svg";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-black p-10">
-      <main className="relative flex h-[819px] w-[1440px] flex-col items-start overflow-hidden rounded-[24px] border border-white/10 bg-[#edece9] px-6">
-        <img
-          src={blueGlow}
-          alt=""
-          className="pointer-events-none absolute left-[125px] top-[-107px] w-[1086px]"
-        />
-        <img
-          src={ellipseGlow}
-          alt=""
-          className="pointer-events-none absolute left-[14px] top-[-92px] w-[1372px]"
-        />
+    <div className="min-h-screen w-full bg-[#edece9]">
+      <NavRail />
 
-        <NavRail />
+      <div className="pl-[60px]">
+        <main className="relative mx-auto flex min-h-screen w-full max-w-[1380px] flex-col items-start overflow-x-hidden px-6">
+          <img
+            src={blueGlow}
+            alt=""
+            className="pointer-events-none absolute left-[125px] top-[-107px] w-[1086px]"
+          />
+          <img
+            src={ellipseGlow}
+            alt=""
+            className="pointer-events-none absolute left-[14px] top-[-92px] w-[1372px]"
+          />
 
-        <div className="relative flex w-full flex-col items-start pl-[60px]">
           <Header />
 
           <div className="flex w-full items-start gap-2.5 pb-6">
@@ -40,8 +40,8 @@ export default function Home() {
               <UnassignedCasesWidget />
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
