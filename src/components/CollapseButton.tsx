@@ -1,4 +1,4 @@
-import NowIcon from "./NowIcon";
+import chevronRight from "../assets/chevron-right-outline-16.svg";
 
 export default function CollapseButton({
   bg = "#f7f7f7",
@@ -12,7 +12,7 @@ export default function CollapseButton({
       style={{ backgroundColor: bg }}
       aria-label="Collapse"
     >
-      <NowIcon icon="chevron-right-outline" size="sm" className="text-[#2e2e29]" />
+      <img src={chevronRight} alt="" className="size-4" />
     </button>
   );
 }
