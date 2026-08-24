@@ -1,11 +1,10 @@
-import { Package } from "lucide-react";
 import NowIcon from "./NowIcon";
 import navVector from "../assets/nav-vector.svg";
 import divider from "../assets/divider.svg";
-import appTile from "../assets/app-tile.svg";
-import stopwatch from "../assets/stopwatch.svg";
-import chartBar from "../assets/chart-bar.svg";
-import ongoing from "../assets/ongoing.svg";
+import navItem2 from "../assets/nav-item2.svg";
+import navFolder from "../assets/nav-folder.svg";
+import navGauge from "../assets/nav-module1-gauge.svg";
+import avatarPhoto from "../assets/avatar-photo.png";
 
 function GlobalItem({
   children,
@@ -68,7 +67,7 @@ export default function NavRail() {
             <NowIcon icon="home-outline" size="md" className="text-[#2e2e29]" />
           </GlobalItem>
           <GlobalItem>
-            <img src={appTile} alt="" className="size-5" />
+            <img src={navItem2} alt="" className="size-5" />
           </GlobalItem>
           <GlobalItem>
             <NowIcon
@@ -80,7 +79,7 @@ export default function NavRail() {
           <GlobalItem>
             <span className="relative">
               <NowIcon icon="bell-outline" size="md" className="text-[#2e2e29]" />
-              <span className="absolute -right-1.5 -top-1.5 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-red-600 px-0.5 text-[9px] font-medium leading-none text-white">
+              <span className="absolute -right-2.5 -top-1.5 flex size-[18px] items-center justify-center rounded-full bg-[#ffd8d0] text-[10px] font-bold leading-none text-[#750000]">
                 12
               </span>
             </span>
@@ -89,6 +88,13 @@ export default function NavRail() {
             <NowIcon icon="compass-outline" size="md" className="text-[#2e2e29]" />
           </GlobalItem>
         </div>
+
+        <img src={divider} alt="" className="h-1 w-[33px]" />
+
+        {/* Standalone folder item */}
+        <GlobalItem>
+          <img src={navFolder} alt="" className="size-5" />
+        </GlobalItem>
 
         <img src={divider} alt="" className="h-1 w-[33px]" />
 
@@ -105,6 +111,9 @@ export default function NavRail() {
               </span>
             </button>
             <div className="flex flex-col items-center gap-1.5 pb-1.5 pl-1 pr-1">
+              <L1ModuleIcon>
+                <img src={navGauge} alt="" className="h-2.5 w-3.5" />
+              </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
                   icon="lightning-outline"
@@ -120,7 +129,7 @@ export default function NavRail() {
                 />
               </L1ModuleIcon>
               <L1ModuleIcon>
-                <Package className="size-3 text-[#2e2e29]" strokeWidth={1.75} />
+                <NowIcon icon="toolbox-outline" size="sm" className="text-[#2e2e29]" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
@@ -151,45 +160,22 @@ export default function NavRail() {
         </div>
 
         {/* Sticky footer */}
-        <div className="flex w-full flex-col items-center gap-0.5 border-t border-[#edece9] pt-1.5">
-          <div className="grid grid-cols-1 gap-0.5">
-            <GlobalItem>
-              <img src={stopwatch} alt="" className="size-4" />
-            </GlobalItem>
-            <GlobalItem>
-              <img src={chartBar} alt="" className="size-4" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon icon="phone-outline" size="sm" className="text-[#2e2e29]" />
-            </GlobalItem>
-            <GlobalItem>
-              <img src={ongoing} alt="" className="size-4" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon
-                icon="circle-question-outline"
-                size="sm"
-                className="text-[#2e2e29]"
-              />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon icon="globe-outline" size="sm" className="text-[#2e2e29]" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon
-                icon="ellipsis-v-outline"
-                size="sm"
-                className="text-[#2e2e29]"
-              />
-            </GlobalItem>
-          </div>
-          <button
-            type="button"
-            className="mt-1 flex size-8 items-center justify-center rounded-full bg-gradient-to-b from-[#3a3a36] to-[#232320] text-[11px] font-medium text-white"
-            aria-label="Profile"
-          >
-            SN
-          </button>
+        <div className="flex w-full flex-col items-center gap-2 border-t border-[#edece9] pt-2">
+          <GlobalItem>
+            <NowIcon
+              icon="ellipsis-v-outline"
+              size="sm"
+              className="text-[#2e2e29]"
+            />
+          </GlobalItem>
+          <span className="relative">
+            <img
+              src={avatarPhoto}
+              alt="Profile"
+              className="size-8 rounded-full object-cover"
+            />
+            <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full border-2 border-white bg-[#4fd15c]" />
+          </span>
         </div>
       </div>
     </nav>
