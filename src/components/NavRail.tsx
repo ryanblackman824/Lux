@@ -136,15 +136,15 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
   return (
     <div className="absolute left-0 top-0 flex h-full w-[260px] flex-col border-r border-white pb-1 pl-1.5 pr-1.5 pt-2.5">
       <div className="flex h-full w-full flex-1 flex-col rounded-[24px]">
-        <div className="flex w-full flex-col gap-4">
-          <div className="flex w-full items-center gap-1 pl-1">
+        <div className="flex w-full flex-col gap-1.5">
+          <div className="flex h-7 w-full items-center gap-1 pl-1">
             <div className="flex flex-1 items-center overflow-hidden px-1.5">
               <img src={wordmark} alt="ServiceNow" className="h-6 w-[137px]" />
             </div>
             <button
               type="button"
               onClick={onCollapse}
-              className="flex size-8 items-center justify-center rounded-full hover:bg-black/5"
+              className="flex size-7 items-center justify-center rounded-full hover:bg-black/5"
               aria-label="Collapse navigation"
             >
               <img src={panelCollapse} alt="" className="size-4" />
