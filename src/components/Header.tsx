@@ -31,7 +31,14 @@ export default function Header() {
           </div>
 
           <form
-            className="flex w-full max-w-[768px] flex-col items-start rounded-full border border-white bg-[#edece9] p-1 shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)]"
+            className="flex w-full max-w-[768px] flex-col items-start rounded-full p-1 shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)]"
+            style={{
+              border: "1px solid transparent",
+              backgroundImage:
+                "linear-gradient(#edece9, #edece9), linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 100%)",
+              backgroundOrigin: "border-box",
+              backgroundClip: "padding-box, border-box",
+            }}
             onSubmit={(e) => e.preventDefault()}
           >
             <div className="flex w-full flex-col items-start overflow-hidden rounded-full bg-white">
