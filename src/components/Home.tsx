@@ -13,7 +13,7 @@ export default function Home() {
       <NavRail />
 
       <div className="pl-[60px]">
-        <main className="relative mx-auto flex min-h-screen w-full max-w-[1380px] flex-col items-start overflow-x-hidden px-6">
+        <main className="relative isolate mx-auto flex min-h-screen w-full max-w-[1380px] flex-col items-start overflow-x-hidden px-6">
           <img
             src={blueGlow}
             alt=""
