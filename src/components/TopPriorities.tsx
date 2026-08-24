@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import SparkleIcon from "./SparkleIcon";
 import CollapseButton from "./CollapseButton";
 import Button from "./Button";
@@ -77,6 +77,22 @@ const ROWS: Row[] = [
 
 export default function TopPriorities() {
   const [active, setActive] = useState<string>("all");
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+
+  const measure = () => {
+    const el = tabRefs.current[active];
+    if (el) {
+      setIndicator({ left: el.offsetLeft, width: el.offsetWidth });
+    }
+  };
+
+  useLayoutEffect(measure, [active]);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   return (
     <section className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] bg-white/[0.33] px-2.5 py-6">
@@ -90,18 +106,24 @@ export default function TopPriorities() {
 
         <div className="flex w-full flex-col items-center">
           <div className="flex w-full flex-col items-start justify-center pb-4 pr-2.5">
-            <div className="flex items-center gap-1.5 rounded-full border border-white p-1.5">
+            <div className="relative flex items-center gap-1.5 rounded-full border border-white p-1.5">
+              <span
+                className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{ left: indicator.left, width: indicator.width }}
+                aria-hidden="true"
+              />
               {TABS.map((tab) => {
                 const isActive = active === tab.id;
                 return (
                   <button
                     key={tab.id}
+                    ref={(el) => {
+                      tabRefs.current[tab.id] = el;
+                    }}
                     type="button"
                     onClick={() => setActive(tab.id)}
-                    className={`flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-xs tracking-[-0.12px] transition-colors ${
-                      isActive
-                        ? "bg-white pr-1 text-black shadow-[0px_1px_1px_rgba(0,0,0,0.1)]"
-                        : "text-[#4d4c4a] hover:bg-white/60"
+                    className={`relative z-10 flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-xs tracking-[-0.12px] transition-colors ${
+                      isActive ? "text-black" : "text-[#4d4c4a] hover:bg-white/60"
                     }`}
                   >
                     {tab.icon === "sparkle" && (
@@ -112,7 +134,7 @@ export default function TopPriorities() {
                     )}
                     <span>{tab.label}</span>
                     <span
-                      className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] ${
+                      className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] transition-colors ${
                         isActive ? "bg-[#f4f3f0] text-black" : "text-[#4d4c4a]"
                       }`}
                     >
