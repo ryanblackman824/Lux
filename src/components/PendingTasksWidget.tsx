@@ -12,14 +12,14 @@ function Tag({ children }: { children: React.ReactNode }) {
 export default function PendingTasksWidget() {
   return (
     <section
-      className="flex h-[375px] flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6"
+      className="flex h-[356px] flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6"
       style={{
         backgroundImage:
           "linear-gradient(128deg, rgba(255,255,255,0) 75.6%, #fff 96.8%), linear-gradient(152deg, rgba(248,248,248,0.15) 11.7%, #f8f8f8 46.2%)",
       }}
     >
       <div className="flex w-full items-center gap-1.5 pb-3">
-        <h2 className="text-[36px] tracking-[-0.36px] text-neutral">
+        <h2 className="text-xl tracking-[-0.2px] text-neutral">
           Pending Tasks
         </h2>
         <Tag>3</Tag>
@@ -32,7 +32,7 @@ export default function PendingTasksWidget() {
             Approval
           </span>
         </div>
-        <p className="w-full pt-2.5 font-serif text-lg text-neutral">
+        <p className="w-full pt-2.5 font-serif text-base text-neutral">
           CHG0000088: Upgrade NY NAC to Oracle 12C
         </p>
         <p className="w-full pb-4 pt-1.5 text-sm text-text-tertiary">

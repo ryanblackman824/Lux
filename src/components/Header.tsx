@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex w-full flex-col items-center gap-[34px]">
           <div className="flex items-center justify-center gap-3">
             <SparkleIcon className="size-8 shrink-0 text-accent" />
-            <p className="text-[64px] tracking-[-1.28px] text-neutral">
+            <p className="text-4xl tracking-tight text-neutral">
               Let&rsquo;s get started on your day, Alex
             </p>
           </div>

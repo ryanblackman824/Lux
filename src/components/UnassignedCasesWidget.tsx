@@ -52,7 +52,7 @@ export default function UnassignedCasesWidget() {
       }}
     >
       <div className="flex w-full items-start gap-2.5 px-4 pt-4">
-        <h2 className="text-[36px] tracking-[-0.36px] text-neutral">
+        <h2 className="text-xl tracking-[-0.2px] text-neutral">
           Unassigned Cases
         </h2>
         <span className="flex size-6 items-center justify-center rounded-full bg-white text-sm tracking-[-0.14px] text-[#535353]">
@@ -77,7 +77,7 @@ export default function UnassignedCasesWidget() {
               </span>
             </div>
             <div className="flex w-full flex-col items-start gap-1.5">
-              <p className="w-full font-serif text-lg text-neutral">
+              <p className="w-full font-serif text-base text-neutral">
                 {c.title}
               </p>
               <div className="flex w-full items-center gap-[15px]">

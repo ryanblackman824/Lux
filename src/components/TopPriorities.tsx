@@ -97,7 +97,7 @@ export default function TopPriorities() {
     <section className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] bg-white/[0.33] px-2.5 py-6">
       <div className="flex w-full flex-col items-start pb-4 px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
-          <h2 className="text-[48px] tracking-[-0.96px] text-neutral">
+          <h2 className="text-[28px] tracking-[-0.4px] text-neutral">
             Top Priorities
           </h2>
           <CollapseButton bg="#f6f5f3" />
@@ -213,7 +213,7 @@ export default function TopPriorities() {
                 </span>
               </div>
               <div className="flex w-full flex-col items-start">
-                <p className="w-full font-serif text-lg text-neutral">
+                <p className="w-full font-serif text-base text-neutral">
                   {row.title}
                 </p>
                 <div className="flex w-full items-center gap-[30px]">

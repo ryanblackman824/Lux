@@ -6,7 +6,7 @@ import listIcon from "../assets/list.svg";
 export default function YourDayWidget() {
   return (
     <section
-      className="flex h-[375px] flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white p-6"
+      className="flex h-[340px] flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white p-6"
       style={{
         backgroundImage:
           "linear-gradient(128deg, rgba(255,255,255,0) 75.6%, var(--color-bg-primary) 96.8%), linear-gradient(152deg, rgba(248,248,248,0.15) 11.7%, #f8f8f8 46.2%)",
@@ -14,7 +14,7 @@ export default function YourDayWidget() {
     >
       <div className="flex w-full flex-col items-start">
         <div className="flex w-full items-center justify-between">
-          <h2 className="flex-1 text-[36px] tracking-[-0.36px] text-neutral">
+          <h2 className="flex-1 text-xl tracking-[-0.2px] text-neutral">
             Today&rsquo;s progress
           </h2>
           <CollapseButton />
@@ -22,7 +22,7 @@ export default function YourDayWidget() {
         <p className="pt-1 text-sm text-text-tertiary">Due today</p>
 
         <div className="flex w-full flex-col items-start pt-1.5">
-          <p className="text-[40px] leading-none tracking-[-0.4px] text-neutral">
+          <p className="text-4xl leading-none tracking-tight text-neutral">
             8
           </p>
           <p className="pt-1 text-sm text-neutral">Remaining</p>
