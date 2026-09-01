@@ -8,32 +8,68 @@ export default {
         serif: ["Source Serif 4", "Georgia", "serif"],
       },
       colors: {
+        primary: {
+          DEFAULT: "var(--color-primary)",
+          content: "var(--color-primary-content)",
+        },
+        secondary: {
+          DEFAULT: "var(--color-secondary)",
+          content: "var(--color-secondary-content)",
+        },
         accent: {
           DEFAULT: "var(--color-accent)",
+          content: "var(--color-accent-content)",
           hover: "var(--color-accent-hover)",
           50: "var(--color-accent-50)",
         },
-        primary: "var(--color-primary)",
-        success: "var(--color-success)",
-        error: "var(--color-error)",
+        neutral: {
+          DEFAULT: "var(--color-neutral)",
+          content: "var(--color-neutral-content)",
+        },
+        base: {
+          100: "var(--color-base-100)",
+          200: "var(--color-base-200)",
+          300: "var(--color-base-300)",
+          "300-active": "var(--color-base-300-active)",
+          content: "var(--color-base-content)",
+        },
+        info: {
+          DEFAULT: "var(--color-info)",
+          content: "var(--color-info-content)",
+        },
+        success: {
+          DEFAULT: "var(--color-success)",
+          content: "var(--color-success-content)",
+        },
+        warning: {
+          DEFAULT: "var(--color-warning)",
+          content: "var(--color-warning-content)",
+        },
+        error: {
+          DEFAULT: "var(--color-error)",
+          content: "var(--color-error-content)",
+        },
+        link: "var(--color-link)",
         text: {
           primary: "var(--color-text-primary)",
           secondary: "var(--color-text-secondary)",
           tertiary: "var(--color-text-tertiary)",
           inverted: "var(--color-text-inverted)",
         },
-        secondary: {
-          content: "var(--color-secondary-content)",
+        background: {
+          primary: "var(--color-background-primary)",
+          secondary: "var(--color-background-secondary)",
+          tertiary: "var(--color-background-tertiary)",
+          inverted: "var(--color-background-inverted)",
         },
         surface: {
-          primary: "var(--color-bg-primary)",
-          tertiary: "var(--color-bg-tertiary)",
+          primary: "var(--color-surface-primary)",
+          secondary: "var(--color-surface-secondary)",
         },
-        neutral: {
-          DEFAULT: "var(--color-neutral)",
-          300: "var(--color-neutral-300)",
-          400: "var(--color-neutral-400)",
-          700: "var(--color-neutral-700)",
+        border: {
+          DEFAULT: "var(--color-border-default)",
+          subtle: "var(--color-border-subtle)",
+          strong: "var(--color-border-strong)",
         },
         red: {
           50: "var(--color-red-50)",
@@ -56,8 +92,10 @@ export default {
         },
         blue: {
           100: "var(--color-blue-100)",
+          200: "var(--color-blue-200)",
           300: "var(--color-blue-300)",
           700: "var(--color-blue-700)",
+          800: "var(--color-blue-800)",
           900: "var(--color-blue-900)",
         },
         indigo: {
@@ -65,6 +103,7 @@ export default {
           200: "var(--color-indigo-200)",
           300: "var(--color-indigo-300)",
           600: "var(--color-indigo-600)",
+          900: "var(--color-indigo-900)",
         },
         green: {
           100: "var(--color-green-100)",

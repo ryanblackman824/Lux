@@ -62,7 +62,7 @@ function L1ModuleIcon({
         {children}
       </button>
       {hasSubmenu && (
-        <span className="absolute bottom-[3px] right-0 size-[3px] rounded-full bg-[#8a8986]" />
+        <span className="absolute bottom-[3px] right-0 size-[3px] rounded-full bg-border" />
       )}
     </div>
   );
@@ -158,7 +158,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto pt-4">
-          <div className="border-b border-neutral-300 pb-0.5">
+          <div className="border-b border-border-subtle pb-0.5">
             <button
               type="button"
               className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
@@ -185,7 +185,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
             <div className="px-2">
               <div className="w-full overflow-hidden rounded-2xl bg-white">
                 <div className="flex items-center gap-2 px-2.5 py-2">
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-[#114598] to-[#2a6edc] text-[8px] font-medium leading-none text-white">
+                  <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-blue-800 to-info text-[8px] font-medium leading-none text-white">
                     CSM
                   </span>
                   <span className="flex-1 text-sm text-secondary-content">CSM</span>
@@ -217,7 +217,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
           </div>
         </div>
 
-        <div className="flex w-full items-center gap-2 border-t border-neutral-300 px-1.5 py-1.5">
+        <div className="flex w-full items-center gap-2 border-t border-border-subtle px-1.5 py-1.5">
           <img
             src={avatarPhoto}
             alt="Profile"
@@ -348,7 +348,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
         </div>
 
         {/* Sticky footer */}
-        <div className="flex w-full flex-col items-center gap-2 border-t border-surface-tertiary pt-2">
+        <div className="flex w-full flex-col items-center gap-2 border-t border-background-tertiary pt-2">
           <GlobalItem>
             <img src={ellipsisIcon} alt="" className="size-4" />
           </GlobalItem>
@@ -371,7 +371,7 @@ export default function NavRail() {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden border-r border-neutral-300 bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden border-r border-border-subtle bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
         expanded ? "w-[260px]" : "w-[60px]"
       }`}
       aria-label="Primary"

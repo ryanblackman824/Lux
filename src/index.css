@@ -3,28 +3,60 @@
 @tailwind utilities;
 
 :root {
-  /* Figma tokens: Platform Vision AINPX Phase 1, node 15262:31207 */
-  --color-accent: #68e353;
-  --color-accent-hover: #52cb3d;
-  --color-accent-50: #e9ffe5;
-  --color-primary: #00283c;
-  --color-success: #00834f;
-  --color-error: #e2161c;
+  /* Horizon 2.0 Foundations — figma.com/design/QCczk1RjplydYWDFIYKtDY */
 
+  /* Brand */
+  --color-primary: #00283c;
+  --color-primary-content: #ffffff;
+  --color-secondary: #e3e2df;
+  --color-secondary-content: #343331;
+  --color-accent: #68e353;
+  --color-accent-content: #000000;
+  --color-accent-hover: #52cb3d; /* accent/300 */
+  --color-accent-50: #e9ffe5;
+  --color-neutral: #171614;
+  --color-neutral-content: #ffffff;
+
+  /* Base surfaces */
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f3f0;
+  --color-base-300: #edece9;
+  --color-base-300-active: #c2c1be;
+  --color-base-content: #000000;
+
+  /* Semantic status */
+  --color-info: #2a6edc;
+  --color-info-content: #f4f9ff;
+  --color-success: #00834f;
+  --color-success-content: #f1fcf5;
+  --color-warning: #8d6e00;
+  --color-warning-content: #fffbc9;
+  --color-error: #e2161c;
+  --color-error-content: #fff7f6;
+  --color-link: #1b59bb;
+
+  /* Text */
   --color-text-primary: #000000;
   --color-text-secondary: #4d4c4a;
   --color-text-tertiary: #656462;
   --color-text-inverted: #ffffff;
-  --color-secondary-content: #343331;
 
-  --color-bg-primary: #ffffff;
-  --color-bg-tertiary: #edece9;
+  /* Background */
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f3f0;
+  --color-background-tertiary: #edece9;
+  --color-background-inverted: #171614;
 
-  --color-neutral: #171614;
-  --color-neutral-300: #e3e2df;
-  --color-neutral-400: #c2c1be;
-  --color-neutral-700: #4d4c4a;
+  /* Surface */
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #e3e2df;
 
+  /* Border */
+  --color-border-default: #8a8986;
+  --color-border-subtle: #e3e2df;
+  --color-border-strong: #00283c;
+
+  /* Ramps (stops actually used in the prototype) */
   --color-red-50: #fff7f6;
   --color-red-100: #ffd8d0;
   --color-red-200: #ffb8ad;
@@ -41,14 +73,17 @@
   --color-amber-200: #ffbe57;
 
   --color-blue-100: #cbe4ff;
+  --color-blue-200: #a1cdff;
   --color-blue-300: #7cb6ff;
   --color-blue-700: #1b59bb;
+  --color-blue-800: #114598;
   --color-blue-900: #083376;
 
   --color-indigo-100: #dddeff;
   --color-indigo-200: #c5c5ff;
   --color-indigo-300: #aeaaff;
   --color-indigo-600: #6f57f5;
+  --color-indigo-900: #37228a;
 
   --color-green-100: #a1f1c5;
   --color-green-200: #63e0a3;

@@ -106,7 +106,7 @@ export default function TopPriorities() {
           <h2 className="text-[28px] tracking-[-0.4px] text-neutral">
             Top Priorities
           </h2>
-          <CollapseButton bg="#f6f5f3" />
+          <CollapseButton />
         </div>
 
         <div className="flex w-full flex-col items-center">
@@ -140,7 +140,7 @@ export default function TopPriorities() {
                     <span>{tab.label}</span>
                     <span
                       className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] transition-colors ${
-                        isActive ? "bg-[#f4f3f0] text-black" : "text-text-secondary"
+                        isActive ? "bg-base-200 text-black" : "text-text-secondary"
                       }`}
                     >
                       {tab.count}
@@ -176,7 +176,7 @@ export default function TopPriorities() {
             {FILTERS.map((filter) => (
               <span
                 key={filter}
-                className="flex h-6 items-center gap-2 rounded-full border border-neutral-400 pl-3 pr-2.5 text-xs tracking-[-0.12px] text-text-secondary"
+                className="flex h-6 items-center gap-2 rounded-full border border-base-300-active pl-3 pr-2.5 text-xs tracking-[-0.12px] text-text-secondary"
               >
                 {filter}
                 <NowIcon icon="close-outline" size="xs" />
@@ -203,7 +203,7 @@ export default function TopPriorities() {
         {ROWS.map((row, i) => (
           <div
             key={i}
-            className={`flex w-full flex-col items-start border-b border-surface-tertiary p-6 ${
+            className={`flex w-full flex-col items-start border-b border-background-tertiary p-6 ${
               i === ROWS.length - 1 ? "rounded-b-3xl" : ""
             }`}
           >

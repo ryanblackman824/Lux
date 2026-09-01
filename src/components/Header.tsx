@@ -33,7 +33,7 @@ export default function Header() {
             style={{
               border: "1px solid transparent",
               backgroundImage:
-                "linear-gradient(var(--color-bg-tertiary), var(--color-bg-tertiary)), linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 100%)",
+                "linear-gradient(var(--color-background-tertiary), var(--color-background-tertiary)), linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 100%)",
               backgroundOrigin: "border-box",
               backgroundClip: "padding-box, border-box",
             }}

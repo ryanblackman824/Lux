@@ -30,7 +30,7 @@ export default function YourDayWidget() {
 
         <div className="flex w-full flex-col items-start gap-2.5 pt-1">
           <Pill tone="green">5 of 13 resolved</Pill>
-          <div className="h-[13px] w-full overflow-hidden rounded-full bg-surface-tertiary">
+          <div className="h-[13px] w-full overflow-hidden rounded-full bg-background-tertiary">
             <div
               className="h-full rounded-full bg-success"
               style={{ width: "38%" }}

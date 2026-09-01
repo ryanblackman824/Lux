@@ -9,7 +9,7 @@ import ellipseGlow from "../assets/ellipse-glow.svg";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-surface-tertiary">
+    <div className="min-h-screen w-full bg-background-tertiary">
       <NavRail />
 
       <div className="pl-[60px]">
