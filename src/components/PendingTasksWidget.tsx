@@ -1,5 +1,6 @@
 import Button from "./Button";
 import Pill from "./Pill";
+import NowIcon from "./NowIcon";
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
@@ -12,10 +13,10 @@ function Tag({ children }: { children: React.ReactNode }) {
 export default function PendingTasksWidget() {
   return (
     <section
-      className="flex h-[356px] flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6"
+      className="flex h-[356px] flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
       style={{
         backgroundImage:
-          "linear-gradient(128deg, rgba(255,255,255,0) 75.6%, #fff 96.8%), linear-gradient(152deg, rgba(248,248,248,0.15) 11.7%, #f8f8f8 46.2%)",
+          "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
       }}
     >
       <div className="flex w-full items-center gap-1.5 pb-3">
@@ -41,6 +42,7 @@ export default function PendingTasksWidget() {
         </p>
         <Button variant="secondary" className="w-full">
           Approve
+          <NowIcon icon="chevron-down-outline" size="xs" />
         </Button>
       </div>
 

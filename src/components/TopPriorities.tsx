@@ -94,7 +94,13 @@ export default function TopPriorities() {
   }, []);
 
   return (
-    <section className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] bg-white/[0.33] px-2.5 py-6">
+    <section
+      className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] border border-white px-2.5 py-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      style={{
+        backgroundImage:
+          "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
+      }}
+    >
       <div className="flex w-full flex-col items-start pb-4 px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
           <h2 className="text-[28px] tracking-[-0.4px] text-neutral">
@@ -180,7 +186,7 @@ export default function TopPriorities() {
           <div className="flex items-center gap-2">
             <NowIcon
               icon="arrow-up-down-outline"
-              size="sm"
+              size="xs"
               className="text-text-tertiary"
             />
             <span className="text-sm tracking-[-0.14px] text-text-tertiary">
@@ -188,7 +194,7 @@ export default function TopPriorities() {
             </span>
             <NowIcon
               icon="chevron-down-outline"
-              size="sm"
+              size="xs"
               className="text-text-tertiary"
             />
           </div>
@@ -223,7 +229,7 @@ export default function TopPriorities() {
                   <Button variant={row.button.variant} className="shrink-0">
                     {row.button.label}
                     {row.button.chevron && (
-                      <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
+                      <NowIcon icon="chevron-down-outline" size="xs" className="-rotate-90" />
                     )}
                   </Button>
                 </div>
