@@ -1,4 +1,3 @@
-import CollapseButton from "./CollapseButton";
 import Pill, { type PillTone } from "./Pill";
 import Button from "./Button";
 import NowIcon from "./NowIcon";
@@ -10,42 +9,35 @@ const CASES: {
   description: string;
 }[] = [
   {
-    id: "TASK000428",
+    id: "INC0000126",
     pills: [
-      { tone: "red", label: "Due Tomorrow" },
+      { tone: "red", label: "SLA breach in 8 hrs" },
       { tone: "amber", label: "2 - High" },
     ],
     title: "Executive laptop replacement request",
     description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
+      "12 users have been unable to connect since 8am. A resolution is ready for your review and approval.",
   },
   {
-    id: "TASK000428",
-    pills: [{ tone: "red", label: "2 - High" }],
-    title: "Executive laptop replacement request",
+    id: "INC0012861",
+    pills: [{ tone: "amber", label: "2 - High" }],
+    title: "Email delivery delays in EMEA",
     description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
+      "Mail delivery is improving after recent remediation, but affected users should be updated before further escalations are submitted.",
   },
   {
-    id: "TASK000428",
-    pills: [{ tone: "red", label: "2 - High" }],
-    title: "Executive laptop replacement request",
+    id: "INC0012861",
+    pills: [{ tone: "amber", label: "2 - High" }],
+    title: "Email delivery delays in EMEA",
     description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
-  },
-  {
-    id: "TASK000428",
-    pills: [{ tone: "red", label: "2 - High" }],
-    title: "Executive laptop replacement request",
-    description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
+      "Mail delivery is improving after recent remediation, but affected users should be updated before further escalations are submitted.",
   },
 ];
 
 export default function UnassignedCasesWidget() {
   return (
     <section
-      className="flex h-[556px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-2 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[556px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[32px] border border-white p-2 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
@@ -53,19 +45,19 @@ export default function UnassignedCasesWidget() {
     >
       <div className="flex w-full items-start gap-2.5 px-4 pt-4">
         <h2 className="text-xl tracking-[-0.2px] text-neutral">
-          Unassigned Cases
+          Unassigned cases
         </h2>
         <span className="flex size-6 items-center justify-center rounded-full bg-white text-sm tracking-[-0.14px] text-[#535353]">
           3
         </span>
         <div className="flex flex-1 items-center justify-end">
-          <CollapseButton />
+          <NowIcon icon="arrow-right-outline" size="sm" />
         </div>
       </div>
 
-      <div className="flex w-full min-h-0 flex-1 flex-col items-start gap-4 overflow-y-auto p-4">
+      <div className="flex w-full min-w-0 min-h-0 flex-1 flex-col items-start gap-4 overflow-y-auto p-4">
         {CASES.map((c, i) => (
-          <div key={i} className="flex w-full flex-col items-start gap-2">
+          <div key={i} className="flex w-full min-w-0 flex-col items-start gap-2">
             <div className="flex w-full items-center gap-2">
               {c.pills.map((pill, j) => (
                 <Pill key={j} tone={pill.tone}>
@@ -76,12 +68,12 @@ export default function UnassignedCasesWidget() {
                 {c.id}
               </span>
             </div>
-            <div className="flex w-full flex-col items-start gap-1.5">
+            <div className="flex w-full min-w-0 flex-col items-start gap-1.5">
               <p className="w-full font-serif text-base text-neutral">
                 {c.title}
               </p>
-              <div className="flex w-full items-center gap-[15px]">
-                <p className="flex-1 truncate text-sm text-text-tertiary">
+              <div className="flex w-full min-w-0 items-center gap-[15px]">
+                <p className="min-w-0 flex-1 truncate text-sm text-text-tertiary">
                   {c.description}
                 </p>
                 <Button variant="secondary" className="shrink-0">

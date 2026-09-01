@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import SparkleIcon from "./SparkleIcon";
-import CollapseButton from "./CollapseButton";
 import Button from "./Button";
 import Pill, { type PillTone } from "./Pill";
 import NowIcon from "./NowIcon";
@@ -31,15 +30,15 @@ type Row = {
 
 const ROWS: Row[] = [
   {
-    id: "INC0012993",
+    id: "TASK000428",
     pills: [
       { tone: "red", label: "SLA Breach in 1 hr" },
-      { tone: "red", label: "2 - High" },
+      { tone: "red", label: "1 - Critical" },
     ],
     title: "Server performance degradation",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
-    button: { label: "Open", variant: "primary" },
+    button: { label: "Follow-up", variant: "primary", chevron: true },
   },
   {
     id: "INC0012861",
@@ -47,29 +46,20 @@ const ROWS: Row[] = [
       { tone: "yellow", label: "Threshold exceeded for 2 days" },
       { tone: "amber", label: "2 - High" },
     ],
-    title: "Server performance degradation",
+    title: "Email delivery delays in EMEA",
     description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
-    button: { label: "Follow Up", variant: "primary", chevron: true },
+      "Mail delivery is improving after recent remediation, but affected users should be updated before further escalations are submitted.",
+    button: { label: "Follow-up", variant: "primary", chevron: true },
   },
   {
-    id: "TASK000428",
+    id: "INC0012993",
     pills: [
-      { tone: "red", label: "2 - High" },
-      { tone: "red", label: "2 - High" },
+      { tone: "red", label: "SLA breach in 8 hrs" },
+      { tone: "red", label: "1 - Critical" },
     ],
-    title: "Server performance degradation",
-    description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
-    button: { label: "Assigned to me", variant: "primary" },
-  },
-  {
-    id: "TASK000428",
-    pills: [{ tone: "red", label: "2 - High" }],
-    title: "Server performance degradation",
-    description:
-      "Response time has exceeded threshold for 2 days and may need your escalation.",
-    button: { label: "Assigned to me", variant: "primary" },
+    title: "Exchange server down, no inbound/outbound mail",
+    description: "Critical server down, escalate mail server restart",
+    button: { label: "Follow-up", variant: "primary", chevron: true },
   },
 ];
 
@@ -103,9 +93,9 @@ export default function TopPriorities() {
       <div className="flex w-full flex-col items-start pb-4 px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
           <h2 className="text-[28px] tracking-[-0.4px] text-neutral">
-            Top Priorities
+            Top priorities
           </h2>
-          <CollapseButton />
+          <NowIcon icon="arrow-right-outline" size="sm" />
         </div>
 
         <div className="flex w-full flex-col items-center">

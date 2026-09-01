@@ -28,11 +28,11 @@ export default function Home() {
           <Header />
 
           <div className="flex w-full items-start gap-5 pb-6">
-            <div className="flex flex-1 flex-col items-start">
+            <div className="flex min-w-0 flex-1 flex-col items-start">
               <TopPriorities />
             </div>
 
-            <div className="flex flex-1 flex-col items-start gap-5">
+            <div className="flex min-w-0 flex-1 flex-col items-start gap-5">
               <div className="flex w-full items-start gap-5">
                 <PendingTasksWidget />
                 <YourDayWidget />

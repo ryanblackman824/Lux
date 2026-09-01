@@ -1,4 +1,3 @@
-import CollapseButton from "./CollapseButton";
 import Pill from "./Pill";
 import NowIcon from "./NowIcon";
 import calendarCheck from "../assets/calendar-check.svg";
@@ -6,7 +5,7 @@ import calendarCheck from "../assets/calendar-check.svg";
 export default function YourDayWidget() {
   return (
     <section
-      className="flex h-[340px] flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[340px] min-w-0 flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
@@ -17,7 +16,7 @@ export default function YourDayWidget() {
           <h2 className="flex-1 text-xl tracking-[-0.2px] text-neutral">
             Today&rsquo;s progress
           </h2>
-          <CollapseButton />
+          <NowIcon icon="arrow-right-outline" size="sm" />
         </div>
         <p className="pt-1 text-sm text-text-tertiary">Due today</p>
 

@@ -13,7 +13,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 export default function PendingTasksWidget() {
   return (
     <section
-      className="flex h-[356px] flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[356px] min-w-0 flex-1 flex-col items-start gap-[9px] overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
@@ -21,7 +21,7 @@ export default function PendingTasksWidget() {
     >
       <div className="flex w-full items-center gap-1.5 pb-3">
         <h2 className="text-xl tracking-[-0.2px] text-neutral">
-          Pending Tasks
+          Pending tasks
         </h2>
         <Tag>3</Tag>
       </div>
