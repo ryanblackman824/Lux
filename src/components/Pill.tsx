@@ -1,10 +1,10 @@
 const TONES = {
-  red: "border-[#ffb8ad] bg-[#ffd8d0] text-[#750000]",
-  yellow: "border-[#ffe04d] bg-[#fffbc9] text-[#453500]",
-  amber: "border-[#ffbe57] bg-[#ffdc9d] text-[#642100]",
-  blue: "border-[#a1cdff] bg-[#cbe4ff] text-[#083376]",
-  green: "border-[#63e0a3] bg-[#a1f1c5] text-[#004023]",
-  indigo: "border-[#c5c5ff] bg-[#dddeff] text-[#37228a]",
+  red: "border-red-200 bg-red-100 text-red-900",
+  yellow: "border-yellow-100 bg-yellow-50 text-yellow-900",
+  amber: "border-amber-200 bg-amber-100 text-orange-900",
+  blue: "border-[#a1cdff] bg-blue-100 text-blue-900",
+  green: "border-green-200 bg-green-100 text-green-900",
+  indigo: "border-indigo-200 bg-indigo-100 text-[#37228a]",
 } as const;
 
 export type PillTone = keyof typeof TONES;

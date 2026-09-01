@@ -89,7 +89,7 @@ function ExpandedItem({
       <img src={icon} alt="" className="size-5" />
       <span className="flex-1 text-left text-sm text-black">{label}</span>
       {badge && (
-        <span className="flex size-[18px] items-center justify-center rounded-full bg-[#ffd8d0] text-[10px] font-bold leading-none text-[#750000]">
+        <span className="flex size-[18px] items-center justify-center rounded-full bg-red-100 text-[10px] font-bold leading-none text-red-900">
           {badge}
         </span>
       )}
@@ -158,7 +158,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto pt-4">
-          <div className="border-b border-[#e3e2df] pb-0.5">
+          <div className="border-b border-neutral-300 pb-0.5">
             <button
               type="button"
               className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
@@ -188,7 +188,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
                   <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-[#114598] to-[#2a6edc] text-[8px] font-medium leading-none text-white">
                     CSM
                   </span>
-                  <span className="flex-1 text-sm text-[#343331]">CSM</span>
+                  <span className="flex-1 text-sm text-secondary-content">CSM</span>
                 </div>
                 <div className="flex flex-col gap-0 px-2 pb-1.5">
                   <ModuleRow icon={dashboardDialIcon} label="Overview" />
@@ -217,13 +217,13 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
           </div>
         </div>
 
-        <div className="flex w-full items-center gap-2 border-t border-[#e3e2df] px-1.5 py-1.5">
+        <div className="flex w-full items-center gap-2 border-t border-neutral-300 px-1.5 py-1.5">
           <img
             src={avatarPhoto}
             alt="Profile"
             className="size-[30px] shrink-0 rounded-full object-cover"
           />
-          <span className="flex-1 text-sm text-[#343331]">Renee</span>
+          <span className="flex-1 text-sm text-secondary-content">Renee</span>
           <div className="flex items-center gap-0.5">
             <GlobalItem>
               <img src={stopwatchIcon} alt="" className="size-4" />
@@ -281,7 +281,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
           <GlobalItem>
             <span className="relative">
               <img src={bellIcon} alt="" className="size-5" />
-              <span className="absolute -right-2.5 -top-1.5 flex size-[18px] items-center justify-center rounded-full bg-[#ffd8d0] text-[10px] font-bold leading-none text-[#750000]">
+              <span className="absolute -right-2.5 -top-1.5 flex size-[18px] items-center justify-center rounded-full bg-red-100 text-[10px] font-bold leading-none text-red-900">
                 12
               </span>
             </span>
@@ -348,7 +348,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
         </div>
 
         {/* Sticky footer */}
-        <div className="flex w-full flex-col items-center gap-2 border-t border-[#edece9] pt-2">
+        <div className="flex w-full flex-col items-center gap-2 border-t border-surface-tertiary pt-2">
           <GlobalItem>
             <img src={ellipsisIcon} alt="" className="size-4" />
           </GlobalItem>
@@ -371,7 +371,7 @@ export default function NavRail() {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden border-r border-neutral-300 bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
         expanded ? "w-[260px]" : "w-[60px]"
       }`}
       aria-label="Primary"

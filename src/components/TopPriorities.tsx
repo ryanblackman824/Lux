@@ -97,7 +97,7 @@ export default function TopPriorities() {
     <section className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] bg-white/[0.33] px-2.5 py-6">
       <div className="flex w-full flex-col items-start pb-4 px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
-          <h2 className="text-xl tracking-[-0.2px] text-[#2e2e29]">
+          <h2 className="text-[48px] tracking-[-0.96px] text-neutral">
             Top Priorities
           </h2>
           <CollapseButton bg="#f6f5f3" />
@@ -122,11 +122,11 @@ export default function TopPriorities() {
                     type="button"
                     onClick={() => setActive(tab.id)}
                     className={`relative z-10 flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-xs tracking-[-0.12px] transition-colors ${
-                      isActive ? "text-black" : "text-[#4d4c4a] hover:bg-white/60"
+                      isActive ? "text-black" : "text-text-secondary hover:bg-white/60"
                     }`}
                   >
                     {tab.icon === "sparkle" && (
-                      <SparkleIcon className="size-4 text-[#68e353]" />
+                      <SparkleIcon className="size-4 text-accent" />
                     )}
                     {tab.icon === "lightning" && (
                       <img src={lightningIcon} alt="" className="size-4" />
@@ -134,7 +134,7 @@ export default function TopPriorities() {
                     <span>{tab.label}</span>
                     <span
                       className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] transition-colors ${
-                        isActive ? "bg-[#f4f3f0] text-black" : "text-[#4d4c4a]"
+                        isActive ? "bg-[#f4f3f0] text-black" : "text-text-secondary"
                       }`}
                     >
                       {tab.count}
@@ -145,7 +145,7 @@ export default function TopPriorities() {
             </div>
           </div>
 
-          <div className="flex w-full items-center gap-2 pr-2.5 text-xs text-[#656462]">
+          <div className="flex w-full items-center gap-2 pr-2.5 text-xs text-text-tertiary">
             <span>Curated by AI every 2 hours</span>
             <span>&bull;</span>
             <span>Refreshed just now</span>
@@ -160,8 +160,8 @@ export default function TopPriorities() {
             "linear-gradient(90deg, rgba(255,255,255,0.45) 2.5%, rgba(255,255,255,0) 95.8%)",
         }}
       >
-        <SparkleIcon className="size-5 shrink-0 text-black" />
-        <p className="text-xs text-black">{AI_BANNER_TEXT}</p>
+        <SparkleIcon className="size-5 shrink-0 text-text-tertiary" />
+        <p className="text-xs text-text-tertiary">{AI_BANNER_TEXT}</p>
       </div>
 
       <div className="flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white">
@@ -170,7 +170,7 @@ export default function TopPriorities() {
             {FILTERS.map((filter) => (
               <span
                 key={filter}
-                className="flex h-6 items-center gap-2 rounded-full border border-[#c2c1be] pl-3 pr-2.5 text-xs tracking-[-0.12px] text-[#4d4c4a]"
+                className="flex h-6 items-center gap-2 rounded-full border border-neutral-400 pl-3 pr-2.5 text-xs tracking-[-0.12px] text-text-secondary"
               >
                 {filter}
                 <NowIcon icon="close-outline" size="xs" />
@@ -181,15 +181,15 @@ export default function TopPriorities() {
             <NowIcon
               icon="arrow-up-down-outline"
               size="sm"
-              className="text-[#656462]"
+              className="text-text-tertiary"
             />
-            <span className="text-sm tracking-[-0.14px] text-[#656462]">
+            <span className="text-sm tracking-[-0.14px] text-text-tertiary">
               AI Ranking
             </span>
             <NowIcon
               icon="chevron-down-outline"
               size="sm"
-              className="text-[#656462]"
+              className="text-text-tertiary"
             />
           </div>
         </div>
@@ -197,7 +197,7 @@ export default function TopPriorities() {
         {ROWS.map((row, i) => (
           <div
             key={i}
-            className={`flex w-full flex-col items-start border-b border-[#edece9] p-6 ${
+            className={`flex w-full flex-col items-start border-b border-surface-tertiary p-6 ${
               i === ROWS.length - 1 ? "rounded-b-3xl" : ""
             }`}
           >
@@ -208,14 +208,16 @@ export default function TopPriorities() {
                     {pill.label}
                   </Pill>
                 ))}
-                <span className="whitespace-nowrap text-xs text-[#656462]">
+                <span className="whitespace-nowrap text-xs text-text-tertiary">
                   {row.id}
                 </span>
               </div>
               <div className="flex w-full flex-col items-start">
-                <p className="w-full text-base text-black">{row.title}</p>
+                <p className="w-full font-serif text-lg text-neutral">
+                  {row.title}
+                </p>
                 <div className="flex w-full items-center gap-[30px]">
-                  <p className="flex-1 text-sm text-[#4d4c4a]">
+                  <p className="flex-1 text-sm text-text-tertiary">
                     {row.description}
                   </p>
                   <Button variant={row.button.variant} className="shrink-0">

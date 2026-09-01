@@ -8,7 +8,7 @@ export default function CollapseButton({
   return (
     <button
       type="button"
-      className="flex size-10 items-center justify-center rounded-full border border-[#edece9] shadow-sm hover:brightness-95"
+      className="flex size-10 items-center justify-center rounded-full border border-surface-tertiary shadow-sm hover:brightness-95"
       style={{ backgroundColor: bg }}
       aria-label="Collapse"
     >

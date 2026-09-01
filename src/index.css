@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Figma tokens: Platform Vision AINPX Phase 1, node 15262:31207 */
+  --color-accent: #68e353;
+  --color-accent-hover: #52cb3d;
+  --color-accent-50: #e9ffe5;
+  --color-primary: #00283c;
+  --color-success: #00834f;
+  --color-error: #e2161c;
+
+  --color-text-primary: #000000;
+  --color-text-secondary: #4d4c4a;
+  --color-text-tertiary: #656462;
+  --color-text-inverted: #ffffff;
+  --color-secondary-content: #343331;
+
+  --color-bg-primary: #ffffff;
+  --color-bg-tertiary: #edece9;
+
+  --color-neutral: #171614;
+  --color-neutral-300: #e3e2df;
+  --color-neutral-400: #c2c1be;
+  --color-neutral-700: #4d4c4a;
+
+  --color-red-50: #fff7f6;
+  --color-red-100: #ffd8d0;
+  --color-red-200: #ffb8ad;
+  --color-red-600: #e2161c;
+  --color-red-900: #750000;
+
+  --color-yellow-50: #fffbc9;
+  --color-yellow-100: #ffe04d;
+  --color-yellow-900: #453500;
+
+  --color-orange-900: #642100;
+
+  --color-amber-100: #ffdc9d;
+  --color-amber-200: #ffbe57;
+
+  --color-blue-100: #cbe4ff;
+  --color-blue-300: #7cb6ff;
+  --color-blue-700: #1b59bb;
+  --color-blue-900: #083376;
+
+  --color-indigo-100: #dddeff;
+  --color-indigo-200: #c5c5ff;
+  --color-indigo-300: #aeaaff;
+  --color-indigo-600: #6f57f5;
+
+  --color-green-100: #a1f1c5;
+  --color-green-200: #63e0a3;
+  --color-green-500: #009b60;
+  --color-green-900: #004023;
+
+  --color-violet-500: #9969ff;
+  --color-violet-600: #874af8;
+
+  --radius-selector: 8px;
+}
+
 body {
   margin: 0;
   font-family: "ServiceNow Sans", Inter, system-ui, sans-serif;

@@ -20,10 +20,10 @@ export default function Header() {
       </div>
 
       <div className="flex w-full flex-col items-center justify-center px-2.5 pb-[50px]">
-        <div className="flex h-[139px] w-[789px] flex-col items-center justify-center gap-2.5 p-2.5">
-          <div className="flex w-full items-center justify-center gap-2.5 pb-3">
-            <SparkleIcon className="size-8 shrink-0 text-[#68e353]" />
-            <p className="text-[28px] tracking-[-0.28px] text-[#2e2e29]">
+        <div className="flex w-full flex-col items-center gap-[34px]">
+          <div className="flex items-center justify-center gap-3">
+            <SparkleIcon className="size-8 shrink-0 text-accent" />
+            <p className="text-[64px] tracking-[-1.28px] text-neutral">
               Let&rsquo;s get started on your day, Alex
             </p>
           </div>
@@ -33,7 +33,7 @@ export default function Header() {
             style={{
               border: "1px solid transparent",
               backgroundImage:
-                "linear-gradient(#edece9, #edece9), linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 100%)",
+                "linear-gradient(var(--color-bg-tertiary), var(--color-bg-tertiary)), linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 100%)",
               backgroundOrigin: "border-box",
               backgroundClip: "padding-box, border-box",
             }}
@@ -53,12 +53,12 @@ export default function Header() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Ask Otto anything or search"
-                    className="w-full flex-1 bg-transparent text-base text-[#656462] placeholder:text-[#656462] focus:outline-none"
+                    className="w-full flex-1 bg-transparent text-base text-text-tertiary placeholder:text-text-tertiary focus:outline-none"
                   />
                 </div>
                 <button
                   type="button"
-                  className="flex size-10 items-center justify-center rounded-full bg-[#68e353] px-3 text-[#2e2e29] hover:brightness-95"
+                  className="flex size-10 items-center justify-center rounded-full bg-accent px-3 text-[#2e2e29] hover:brightness-95"
                   aria-label="Voice input"
                 >
                   <NowIcon icon="microphone-fill" size="md" />
