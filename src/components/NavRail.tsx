@@ -4,18 +4,8 @@ import navVector from "../assets/nav-vector.svg";
 import divider from "../assets/divider.svg";
 import sparkleTest from "../assets/sn-sparkmoji-logo-test.svg";
 import navFolder from "../assets/nav-folder.svg";
-import homeIcon from "../assets/home.svg";
-import searchIcon from "../assets/magnifying-glass.svg";
-import bellIcon from "../assets/bell.svg";
-import compassIcon from "../assets/compass.svg";
 import dashboardDialIcon from "../assets/dashboard-dial.svg";
-import lightningIcon from "../assets/lightning.svg";
-import clipboardIcon from "../assets/clipboard-lines.svg";
 import inventoryIcon from "../assets/inventory.svg";
-import buildingIcon from "../assets/building.svg";
-import gearIcon from "../assets/gear.svg";
-import plusIcon from "../assets/plus.svg";
-import ellipsisIcon from "../assets/ellipsis-v.svg";
 import appTile from "../assets/csm-app-tile.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 import wordmark from "../assets/nav-logo-wordmark.svg";
@@ -74,7 +64,7 @@ function ExpandedItem({
   badge,
   active = false,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   badge?: string;
   active?: boolean;
@@ -86,7 +76,7 @@ function ExpandedItem({
         active ? "bg-black/5" : ""
       }`}
     >
-      <img src={icon} alt="" className="size-5" />
+      {icon}
       <span className="flex-1 text-left text-sm text-black">{label}</span>
       {badge && (
         <span className="flex size-[18px] items-center justify-center rounded-full bg-red-100 text-[10px] font-bold leading-none text-red-900">
@@ -102,7 +92,7 @@ function ModuleRow({
   label,
   chevron = false,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   chevron?: boolean;
 }) {
@@ -111,7 +101,7 @@ function ModuleRow({
       type="button"
       className="flex h-[34px] w-full items-center gap-3 rounded-2xl px-2 text-left hover:bg-black/5"
     >
-      <img src={icon} alt="" className="size-4" />
+      {icon}
       <span className="flex-1 text-sm text-black">{label}</span>
       {chevron && (
         <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
@@ -140,15 +130,29 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
           </div>
 
           <div className="flex w-full flex-col gap-0.5">
-            <ExpandedItem icon={homeIcon} label="Home" active />
-            <ExpandedItem icon={sparkleTest} label="Ask Otto" />
-            <ExpandedItem icon={searchIcon} label="Search" />
-            <ExpandedItem icon={bellIcon} label="Notifications" badge="12" />
+            <ExpandedItem
+              icon={<NowIcon icon="home-outline" size="md" />}
+              label="Home"
+              active
+            />
+            <ExpandedItem
+              icon={<img src={sparkleTest} alt="" className="size-5" />}
+              label="Ask Otto"
+            />
+            <ExpandedItem
+              icon={<NowIcon icon="magnifying-glass-outline" size="md" />}
+              label="Search"
+            />
+            <ExpandedItem
+              icon={<NowIcon icon="bell-outline" size="md" />}
+              label="Notifications"
+              badge="12"
+            />
             <button
               type="button"
               className="flex h-9 w-full items-center gap-1.5 rounded-lg px-2.5 hover:bg-black/5"
             >
-              <img src={compassIcon} alt="" className="size-5" />
+              <NowIcon icon="compass-outline" size="md" />
               <span className="flex-1 text-left text-sm text-black">
                 Browse
               </span>
@@ -191,17 +195,39 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
                   <span className="flex-1 text-sm text-secondary-content">CSM</span>
                 </div>
                 <div className="flex flex-col gap-0 px-2 pb-1.5">
-                  <ModuleRow icon={dashboardDialIcon} label="Overview" />
-                  <ModuleRow icon={lightningIcon} label="Activity Center" chevron />
-                  <ModuleRow icon={clipboardIcon} label="Plan" chevron />
-                  <ModuleRow icon={inventoryIcon} label="Inventory" />
-                  <ModuleRow icon={buildingIcon} label="Govern" chevron />
+                  <ModuleRow
+                    icon={<img src={dashboardDialIcon} alt="" className="size-4" />}
+                    label="Overview"
+                  />
+                  <ModuleRow
+                    icon={<NowIcon icon="lightning-outline" size="sm" />}
+                    label="Activity Center"
+                    chevron
+                  />
+                  <ModuleRow
+                    icon={<NowIcon icon="clipboard-outline" size="sm" />}
+                    label="Plan"
+                    chevron
+                  />
+                  <ModuleRow
+                    icon={<img src={inventoryIcon} alt="" className="size-4" />}
+                    label="Inventory"
+                  />
+                  <ModuleRow
+                    icon={<NowIcon icon="building-outline" size="sm" />}
+                    label="Govern"
+                    chevron
+                  />
                   <div className="flex h-[34px] w-full items-center gap-3 px-2">
                     <NowIcon icon="lightbulb-outline" size="sm" className="text-[#2e2e29]" />
                     <span className="flex-1 text-sm text-black">Insights</span>
                     <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
                   </div>
-                  <ModuleRow icon={gearIcon} label="Settings" chevron />
+                  <ModuleRow
+                    icon={<NowIcon icon="gear-outline" size="sm" />}
+                    label="Settings"
+                    chevron
+                  />
                 </div>
               </div>
             </div>
@@ -210,7 +236,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
                 type="button"
                 className="flex h-8 w-full items-center justify-center gap-1 rounded-full border border-[#2e2e29] text-xs text-black hover:bg-black/5"
               >
-                <img src={plusIcon} alt="" className="size-3.5" />
+                <NowIcon icon="plus-outline" size="sm" />
                 Add app or workspace
               </button>
             </div>
@@ -270,24 +296,24 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
         {/* Global items */}
         <div className="flex w-full flex-col items-center gap-0.5 rounded-2xl">
           <GlobalItem active>
-            <img src={homeIcon} alt="" className="size-5" />
+            <NowIcon icon="home-outline" size="md" />
           </GlobalItem>
           <GlobalItem>
             <img src={sparkleTest} alt="" className="size-5" />
           </GlobalItem>
           <GlobalItem>
-            <img src={searchIcon} alt="" className="size-5" />
+            <NowIcon icon="magnifying-glass-outline" size="md" />
           </GlobalItem>
           <GlobalItem>
             <span className="relative">
-              <img src={bellIcon} alt="" className="size-5" />
+              <NowIcon icon="bell-outline" size="md" />
               <span className="absolute -right-2.5 -top-1.5 flex size-[18px] items-center justify-center rounded-full bg-red-100 text-[10px] font-bold leading-none text-red-900">
                 12
               </span>
             </span>
           </GlobalItem>
           <GlobalItem>
-            <img src={compassIcon} alt="" className="size-5" />
+            <NowIcon icon="compass-outline" size="md" />
           </GlobalItem>
         </div>
 
@@ -315,16 +341,16 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
                 <img src={dashboardDialIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={lightningIcon} alt="" className="size-4" />
+                <NowIcon icon="lightning-outline" size="sm" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={clipboardIcon} alt="" className="size-4" />
+                <NowIcon icon="clipboard-outline" size="sm" />
               </L1ModuleIcon>
               <L1ModuleIcon>
                 <img src={inventoryIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={buildingIcon} alt="" className="size-4" />
+                <NowIcon icon="building-outline" size="sm" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
                 <NowIcon
@@ -334,7 +360,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
                 />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <img src={gearIcon} alt="" className="size-4" />
+                <NowIcon icon="gear-outline" size="sm" />
               </L1ModuleIcon>
             </div>
           </div>
@@ -343,14 +369,14 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
             className="mt-1 flex size-8 items-center justify-center rounded-full border border-[#2e2e29]/20 hover:bg-black/5"
             aria-label="Add app"
           >
-            <img src={plusIcon} alt="" className="size-4" />
+            <NowIcon icon="plus-outline" size="sm" />
           </button>
         </div>
 
         {/* Sticky footer */}
         <div className="flex w-full flex-col items-center gap-2 border-t border-background-tertiary pt-2">
           <GlobalItem>
-            <img src={ellipsisIcon} alt="" className="size-4" />
+            <NowIcon icon="ellipsis-v-outline" size="sm" />
           </GlobalItem>
           <span className="relative">
             <img

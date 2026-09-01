@@ -4,7 +4,6 @@ import CollapseButton from "./CollapseButton";
 import Button from "./Button";
 import Pill, { type PillTone } from "./Pill";
 import NowIcon from "./NowIcon";
-import lightningIcon from "../assets/lightning.svg";
 
 const TABS: {
   id: string;
@@ -135,7 +134,7 @@ export default function TopPriorities() {
                       <SparkleIcon className="size-4 text-accent" />
                     )}
                     {tab.icon === "lightning" && (
-                      <img src={lightningIcon} alt="" className="size-4" />
+                      <NowIcon icon="lightning-outline" size="sm" />
                     )}
                     <span>{tab.label}</span>
                     <span
