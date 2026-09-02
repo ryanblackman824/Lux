@@ -37,13 +37,13 @@ const CASES: {
 export default function UnassignedCasesWidget() {
   return (
     <section
-      className="flex h-[511px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[32px] border border-white p-2 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[511px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[32px] border border-white"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
       }}
     >
-      <div className="flex w-full items-start gap-2.5 px-4 pt-4">
+      <div className="flex w-full items-center gap-2.5 px-8 py-6">
         <h2 className="text-lg tracking-[-0.18px] text-black">
           Unassigned cases
         </h2>
@@ -55,35 +55,37 @@ export default function UnassignedCasesWidget() {
         </div>
       </div>
 
-      <div className="flex w-full min-w-0 min-h-0 flex-1 flex-col items-start gap-4 overflow-y-auto p-4">
-        {CASES.map((c, i) => (
-          <div key={i} className="flex w-full min-w-0 flex-col items-start gap-2">
-            <div className="flex w-full items-center gap-2">
-              {c.pills.map((pill, j) => (
-                <Pill key={j} tone={pill.tone}>
-                  {pill.label}
-                </Pill>
-              ))}
-              <span className="whitespace-nowrap text-sm text-text-tertiary">
-                {c.id}
-              </span>
-            </div>
-            <div className="flex w-full min-w-0 flex-col items-start gap-1.5">
-              <p className="w-full text-lg tracking-[-0.18px] text-black">
-                {c.title}
-              </p>
-              <div className="flex w-full min-w-0 items-center gap-[15px]">
-                <p className="min-w-0 flex-1 truncate text-sm text-text-secondary">
-                  {c.description}
+      <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col items-start overflow-y-auto px-6 pb-2">
+        <div className="flex w-full min-w-0 flex-col items-start gap-6 rounded-3xl bg-white p-6 shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)]">
+          {CASES.map((c, i) => (
+            <div key={i} className="flex w-full min-w-0 flex-col items-start gap-2">
+              <div className="flex w-full items-center gap-2">
+                {c.pills.map((pill, j) => (
+                  <Pill key={j} tone={pill.tone} surface="white">
+                    {pill.label}
+                  </Pill>
+                ))}
+                <span className="whitespace-nowrap text-sm text-text-tertiary">
+                  {c.id}
+                </span>
+              </div>
+              <div className="flex w-full min-w-0 flex-col items-start gap-1.5">
+                <p className="w-full text-lg tracking-[-0.18px] text-black">
+                  {c.title}
                 </p>
-                <Button hierarchy="secondary" className="shrink-0">
-                  Assign
-                  <NowIcon icon="caret-down-outline" size="sm" />
-                </Button>
+                <div className="flex w-full min-w-0 items-center gap-[15px]">
+                  <p className="min-w-0 flex-1 truncate text-sm text-text-secondary">
+                    {c.description}
+                  </p>
+                  <Button hierarchy="secondary" className="shrink-0">
+                    Assign
+                    <NowIcon icon="caret-down-outline" size="sm" />
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

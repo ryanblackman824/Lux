@@ -84,7 +84,7 @@ export default function TopPriorities() {
 
   return (
     <section
-      className="flex h-[890px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[890px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-6"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
@@ -106,7 +106,7 @@ export default function TopPriorities() {
       <div className="flex w-full flex-col items-start gap-3 pt-6">
         <div className="relative flex items-center gap-1.5 rounded-full border border-white p-1.5">
           <span
-            className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{ left: indicator.left, width: indicator.width }}
             aria-hidden="true"
           />
@@ -155,7 +155,7 @@ export default function TopPriorities() {
         </div>
       </div>
 
-      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white">
+      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white shadow-[0px_20px_12.5px_rgba(0,0,0,0.1),0px_8px_5px_rgba(0,0,0,0.1)]">
         <div className="flex w-full items-center gap-2 px-6 pt-6">
           <div className="flex flex-1 items-center gap-2">
             {FILTERS.map((filter) => (

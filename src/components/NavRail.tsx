@@ -185,7 +185,7 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
               <NowIcon icon="chevron-up-outline" size="xs" className="text-[#2e2e29]" />
             </button>
             <div className="px-2">
-              <div className="w-full overflow-hidden rounded-2xl bg-white">
+              <div className="w-full overflow-hidden rounded-xl bg-[#f9f8f6] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
                 <div className="flex items-center gap-2 px-2.5 py-2">
                   <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-violet-500 to-violet-600 text-[8px] font-medium leading-none text-white">
                     ITS
@@ -311,7 +311,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
 
         {/* Active app */}
         <div className="flex min-h-0 flex-1 flex-col items-center gap-1 overflow-y-auto px-2.5">
-          <div className="flex flex-col items-center gap-px overflow-hidden rounded-2xl bg-white/60">
+          <div className="flex flex-col items-center gap-px overflow-hidden rounded-xl bg-[#f9f8f6] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
             <button
               type="button"
               className="flex h-10 items-center justify-center rounded-xl px-2.5 py-2"
