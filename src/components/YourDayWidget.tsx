@@ -18,14 +18,14 @@ export default function YourDayWidget() {
           </h2>
           <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
         </div>
-        <p className="pt-1 text-sm text-text-secondary">Due today</p>
+        <p className="pt-2 text-sm text-text-secondary">Due today</p>
 
-        <div className="flex w-full flex-col items-start pt-1.5 text-black">
+        <div className="flex w-full flex-col items-start pt-6 text-black">
           <p className="text-[40px] leading-none tracking-[-0.4px]">8</p>
           <p className="pt-1 text-sm">Remaining</p>
         </div>
 
-        <div className="flex w-full flex-col items-start gap-2.5 pt-1">
+        <div className="flex w-full flex-col items-start gap-3 pt-1">
           <Pill tone="green">5 of 13 resolved</Pill>
           <div className="h-[13px] w-full overflow-hidden rounded-full bg-background-tertiary">
             <div
@@ -37,7 +37,7 @@ export default function YourDayWidget() {
 
         <div className="flex w-full flex-col items-start gap-2 pt-5">
           <p className="text-sm text-black">Overall</p>
-          <div className="flex w-full flex-col items-start gap-2 py-3">
+          <div className="flex w-full flex-col items-start gap-2 p-3">
             <div className="flex w-full items-center justify-between">
               <img src={calendarCheck} alt="" className="size-5" />
               <p className="flex-1 pl-3 text-sm text-text-secondary">

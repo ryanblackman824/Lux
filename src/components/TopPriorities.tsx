@@ -143,20 +143,14 @@ export default function TopPriorities() {
           })}
         </div>
 
-        <div
-          className="flex w-full items-center gap-3 rounded-2xl border border-white px-[15px] py-[11px]"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, rgba(255,255,255,0.45) 2.5%, rgba(255,255,255,0) 95.8%)",
-          }}
-        >
+        <div className="flex h-[68px] w-full items-center gap-3 rounded-xl bg-background-tertiary pl-3 pr-4">
           <SparkleIcon className="size-5 shrink-0 text-text-tertiary" />
           <p className="text-xs text-text-tertiary">{AI_BANNER_TEXT}</p>
         </div>
       </div>
 
-      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white shadow-[0px_20px_12.5px_rgba(0,0,0,0.1),0px_8px_5px_rgba(0,0,0,0.1)]">
-        <div className="flex w-full items-center gap-2 px-6 pt-6">
+      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start gap-6 overflow-y-auto rounded-3xl bg-white p-6 shadow-[0px_20px_12.5px_rgba(0,0,0,0.1),0px_8px_5px_rgba(0,0,0,0.1)]">
+        <div className="flex w-full items-center gap-2">
           <div className="flex flex-1 items-center gap-2">
             {FILTERS.map((filter) => (
               <span
@@ -186,38 +180,31 @@ export default function TopPriorities() {
         </div>
 
         {ROWS.map((row, i) => (
-          <div
-            key={i}
-            className={`flex w-full flex-col items-start border-b border-background-tertiary p-6 ${
-              i === ROWS.length - 1 ? "rounded-b-3xl" : ""
-            }`}
-          >
-            <div className="flex w-full flex-col items-start gap-3">
-              <div className="flex w-full items-center gap-2">
-                {row.pills.map((pill, j) => (
-                  <Pill key={j} tone={pill.tone} surface="white">
-                    {pill.label}
-                  </Pill>
-                ))}
-                <span className="whitespace-nowrap text-sm text-text-tertiary">
-                  {row.id}
-                </span>
-              </div>
-              <div className="flex w-full flex-col items-start">
-                <p className="w-full text-lg tracking-[-0.18px] text-black">
-                  {row.title}
+          <div key={i} className="flex w-full flex-col items-start gap-4">
+            <div className="flex w-full items-center gap-2">
+              {row.pills.map((pill, j) => (
+                <Pill key={j} tone={pill.tone} surface="white">
+                  {pill.label}
+                </Pill>
+              ))}
+              <span className="whitespace-nowrap text-sm text-text-tertiary">
+                {row.id}
+              </span>
+            </div>
+            <div className="flex w-full flex-col items-start gap-2">
+              <p className="w-full text-lg tracking-[-0.18px] text-black">
+                {row.title}
+              </p>
+              <div className="flex w-full items-center gap-8">
+                <p className="flex-1 text-sm text-text-secondary">
+                  {row.description}
                 </p>
-                <div className="flex w-full items-center gap-[30px]">
-                  <p className="flex-1 text-sm text-text-secondary">
-                    {row.description}
-                  </p>
-                  <Button hierarchy={row.button.hierarchy} className="shrink-0">
-                    {row.button.label}
-                    {row.button.chevron && (
-                      <NowIcon icon="caret-down-outline" size="sm" />
-                    )}
-                  </Button>
-                </div>
+                <Button hierarchy={row.button.hierarchy} className="shrink-0">
+                  {row.button.label}
+                  {row.button.chevron && (
+                    <NowIcon icon="caret-down-outline" size="sm" />
+                  )}
+                </Button>
               </div>
             </div>
           </div>

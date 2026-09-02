@@ -59,7 +59,7 @@ export default function Header() {
                   className="flex size-10 items-center justify-center rounded-full bg-accent px-3 text-[#2e2e29] hover:brightness-95"
                   aria-label="Voice input"
                 >
-                  <NowIcon icon="microphone-fill" size="md" />
+                  <NowIcon icon="microphone-fill" size="lg" />
                 </button>
               </div>
             </div>
