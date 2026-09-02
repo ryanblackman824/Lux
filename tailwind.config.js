@@ -84,18 +84,23 @@ export default {
           100: "var(--color-red-100)",
           200: "var(--color-red-200)",
           600: "var(--color-red-600)",
+          700: "var(--color-red-700)",
           900: "var(--color-red-900)",
         },
         yellow: {
           50: "var(--color-yellow-50)",
           100: "var(--color-yellow-100)",
+          300: "var(--color-yellow-300)",
           600: "var(--color-yellow-600)",
+          700: "var(--color-yellow-700)",
           900: "var(--color-yellow-900)",
         },
         orange: {
           50: "var(--color-orange-50)",
           100: "var(--color-orange-100)",
+          200: "var(--color-orange-200)",
           600: "var(--color-orange-600)",
+          700: "var(--color-orange-700)",
           900: "var(--color-orange-900)",
         },
         amber: {
@@ -103,6 +108,7 @@ export default {
           200: "var(--color-amber-200)",
         },
         blue: {
+          50: "var(--color-blue-50)",
           100: "var(--color-blue-100)",
           200: "var(--color-blue-200)",
           300: "var(--color-blue-300)",
@@ -111,13 +117,16 @@ export default {
           900: "var(--color-blue-900)",
         },
         indigo: {
+          50: "var(--color-indigo-50)",
           100: "var(--color-indigo-100)",
           200: "var(--color-indigo-200)",
           300: "var(--color-indigo-300)",
           600: "var(--color-indigo-600)",
+          700: "var(--color-indigo-700)",
           900: "var(--color-indigo-900)",
         },
         green: {
+          50: "var(--color-green-50)",
           100: "var(--color-green-100)",
           200: "var(--color-green-200)",
           500: "var(--color-green-500)",

@@ -199,7 +199,7 @@ export default function TopPriorities() {
             <div className="flex w-full flex-col items-start gap-3">
               <div className="flex w-full items-center gap-2">
                 {row.pills.map((pill, j) => (
-                  <Pill key={j} tone={pill.tone}>
+                  <Pill key={j} tone={pill.tone} surface="white">
                     {pill.label}
                   </Pill>
                 ))}
