@@ -1,9 +1,8 @@
 import { useState } from "react";
 import NowIcon from "./NowIcon";
+import SparkleIcon from "./SparkleIcon";
 import navVector from "../assets/nav-vector.svg";
 import divider from "../assets/divider.svg";
-import sparkleTest from "../assets/sn-sparkmoji-logo-test.svg";
-import navFolder from "../assets/nav-folder.svg";
 import dashboardDialIcon from "../assets/dashboard-dial.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 import wordmark from "../assets/nav-logo-wordmark.svg";
@@ -127,14 +126,14 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
             </button>
           </div>
 
-          <div className="flex w-full flex-col gap-0.5">
+          <div className="flex w-full flex-col gap-4">
             <ExpandedItem
               icon={<NowIcon icon="home-outline" size="md" />}
               label="Home"
               active
             />
             <ExpandedItem
-              icon={<img src={sparkleTest} alt="" className="size-5" />}
+              icon={<SparkleIcon className="size-5 text-accent" />}
               label="Ask Otto"
             />
             <ExpandedItem
@@ -277,12 +276,12 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
         </button>
 
         {/* Global items */}
-        <div className="flex w-full flex-col items-center gap-0.5 rounded-2xl">
+        <div className="flex w-full flex-col items-center gap-4 rounded-2xl">
           <GlobalItem active>
             <NowIcon icon="home-outline" size="md" />
           </GlobalItem>
           <GlobalItem>
-            <img src={sparkleTest} alt="" className="size-5" />
+            <SparkleIcon className="size-5 text-accent" />
           </GlobalItem>
           <GlobalItem>
             <NowIcon icon="magnifying-glass-outline" size="md" />
@@ -304,7 +303,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
 
         {/* Standalone folder item */}
         <GlobalItem>
-          <img src={navFolder} alt="" className="size-5" />
+          <NowIcon icon="folder-outline" size="md" />
         </GlobalItem>
 
         <img src={divider} alt="" className="h-1 w-[33px]" />
@@ -321,7 +320,7 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
                 ITS
               </span>
             </button>
-            <div className="flex flex-col items-center gap-1.5 pb-1.5 pl-1 pr-1">
+            <div className="flex flex-col items-center gap-1 pb-1.5 pl-1 pr-1">
               <L1ModuleIcon>
                 <img src={dashboardDialIcon} alt="" className="size-4" />
               </L1ModuleIcon>
