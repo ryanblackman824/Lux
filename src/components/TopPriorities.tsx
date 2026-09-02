@@ -84,82 +84,78 @@ export default function TopPriorities() {
 
   return (
     <section
-      className="flex h-[890px] w-full flex-col items-center overflow-hidden rounded-[32px] border border-white px-2.5 py-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[890px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
       }}
     >
-      <div className="flex w-full flex-col items-start pb-4 px-3.5">
-        <div className="flex h-10 w-full items-center justify-between gap-8">
-          <h2 className="text-[24px] tracking-[-0.24px] text-black">
-            Top priorities
-          </h2>
-          <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
+      <div className="flex h-10 w-full items-center justify-between gap-8">
+        <h2 className="text-[24px] tracking-[-0.24px] text-black">
+          Top priorities
+        </h2>
+        <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
+      </div>
+
+      <div className="flex w-full items-center gap-2 pt-2 text-xs text-text-tertiary">
+        <span>Curated by AI every 2 hours</span>
+        <span>&bull;</span>
+        <span>Refreshed just now</span>
+      </div>
+
+      <div className="flex w-full flex-col items-start gap-3 pt-6">
+        <div className="relative flex items-center gap-1.5 rounded-full border border-white p-1.5">
+          <span
+            className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            style={{ left: indicator.left, width: indicator.width }}
+            aria-hidden="true"
+          />
+          {TABS.map((tab) => {
+            const isActive = active === tab.id;
+            return (
+              <button
+                key={tab.id}
+                ref={(el) => {
+                  tabRefs.current[tab.id] = el;
+                }}
+                type="button"
+                onClick={() => setActive(tab.id)}
+                className={`relative z-10 flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-xs tracking-[-0.12px] transition-colors ${
+                  isActive ? "text-black" : "text-text-secondary hover:bg-white/60"
+                }`}
+              >
+                {tab.icon === "sparkle" && (
+                  <SparkleIcon className="size-4 text-accent" />
+                )}
+                {tab.icon === "lightning" && (
+                  <NowIcon icon="lightning-outline" size="sm" />
+                )}
+                <span>{tab.label}</span>
+                <span
+                  className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] transition-colors ${
+                    isActive ? "bg-base-200 text-black" : "text-text-secondary"
+                  }`}
+                >
+                  {tab.count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="flex w-full flex-col items-center">
-          <div className="flex w-full flex-col items-start justify-center pb-4 pr-2.5">
-            <div className="relative flex items-center gap-1.5 rounded-full border border-white p-1.5">
-              <span
-                className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                style={{ left: indicator.left, width: indicator.width }}
-                aria-hidden="true"
-              />
-              {TABS.map((tab) => {
-                const isActive = active === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    ref={(el) => {
-                      tabRefs.current[tab.id] = el;
-                    }}
-                    type="button"
-                    onClick={() => setActive(tab.id)}
-                    className={`relative z-10 flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-xs tracking-[-0.12px] transition-colors ${
-                      isActive ? "text-black" : "text-text-secondary hover:bg-white/60"
-                    }`}
-                  >
-                    {tab.icon === "sparkle" && (
-                      <SparkleIcon className="size-4 text-accent" />
-                    )}
-                    {tab.icon === "lightning" && (
-                      <NowIcon icon="lightning-outline" size="sm" />
-                    )}
-                    <span>{tab.label}</span>
-                    <span
-                      className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] transition-colors ${
-                        isActive ? "bg-base-200 text-black" : "text-text-secondary"
-                      }`}
-                    >
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="flex w-full items-center gap-2 pr-2.5 text-xs text-text-tertiary">
-            <span>Curated by AI every 2 hours</span>
-            <span>&bull;</span>
-            <span>Refreshed just now</span>
-          </div>
+        <div
+          className="flex w-full items-center gap-3 rounded-2xl border border-white px-[15px] py-[11px]"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(255,255,255,0.45) 2.5%, rgba(255,255,255,0) 95.8%)",
+          }}
+        >
+          <SparkleIcon className="size-5 shrink-0 text-text-tertiary" />
+          <p className="text-xs text-text-tertiary">{AI_BANNER_TEXT}</p>
         </div>
       </div>
 
-      <div
-        className="mb-4 flex w-full items-center gap-3 rounded-2xl border border-white px-[15px] py-[11px]"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(255,255,255,0.45) 2.5%, rgba(255,255,255,0) 95.8%)",
-        }}
-      >
-        <SparkleIcon className="size-5 shrink-0 text-text-tertiary" />
-        <p className="text-xs text-text-tertiary">{AI_BANNER_TEXT}</p>
-      </div>
-
-      <div className="flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white">
+      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start overflow-y-auto rounded-3xl bg-white">
         <div className="flex w-full items-center gap-2 px-6 pt-6">
           <div className="flex flex-1 items-center gap-2">
             {FILTERS.map((filter) => (
