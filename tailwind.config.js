@@ -26,6 +26,7 @@ export default {
           DEFAULT: "var(--color-neutral)",
           content: "var(--color-neutral-content)",
         },
+        ink: "var(--color-ink)",
         base: {
           100: "var(--color-base-100)",
           200: "var(--color-base-200)",
@@ -81,9 +82,13 @@ export default {
         yellow: {
           50: "var(--color-yellow-50)",
           100: "var(--color-yellow-100)",
+          600: "var(--color-yellow-600)",
           900: "var(--color-yellow-900)",
         },
         orange: {
+          50: "var(--color-orange-50)",
+          100: "var(--color-orange-100)",
+          600: "var(--color-orange-600)",
           900: "var(--color-orange-900)",
         },
         amber: {
@@ -109,6 +114,7 @@ export default {
           100: "var(--color-green-100)",
           200: "var(--color-green-200)",
           500: "var(--color-green-500)",
+          700: "var(--color-green-700)",
           900: "var(--color-green-900)",
         },
         violet: {

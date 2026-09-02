@@ -5,8 +5,6 @@ import divider from "../assets/divider.svg";
 import sparkleTest from "../assets/sn-sparkmoji-logo-test.svg";
 import navFolder from "../assets/nav-folder.svg";
 import dashboardDialIcon from "../assets/dashboard-dial.svg";
-import inventoryIcon from "../assets/inventory.svg";
-import appTile from "../assets/csm-app-tile.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 import wordmark from "../assets/nav-logo-wordmark.svg";
 import panelCollapse from "../assets/panel-display-left-collapse.svg";
@@ -189,10 +187,10 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
             <div className="px-2">
               <div className="w-full overflow-hidden rounded-2xl bg-white">
                 <div className="flex items-center gap-2 px-2.5 py-2">
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-blue-800 to-info text-[8px] font-medium leading-none text-white">
-                    CSM
+                  <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-violet-500 to-violet-600 text-[8px] font-medium leading-none text-white">
+                    ITS
                   </span>
-                  <span className="flex-1 text-sm text-secondary-content">CSM</span>
+                  <span className="flex-1 text-sm text-secondary-content">ITS</span>
                 </div>
                 <div className="flex flex-col gap-0 px-2 pb-1.5">
                   <ModuleRow
@@ -200,33 +198,18 @@ function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
                     label="Overview"
                   />
                   <ModuleRow
-                    icon={<NowIcon icon="lightning-outline" size="sm" />}
+                    icon={<NowIcon icon="inbox-outline" size="sm" />}
                     label="Activity Center"
                     chevron
                   />
                   <ModuleRow
-                    icon={<NowIcon icon="clipboard-outline" size="sm" />}
+                    icon={<NowIcon icon="list-outline" size="sm" />}
                     label="Plan"
                     chevron
                   />
                   <ModuleRow
-                    icon={<img src={inventoryIcon} alt="" className="size-4" />}
+                    icon={<NowIcon icon="user-group-outline" size="sm" />}
                     label="Inventory"
-                  />
-                  <ModuleRow
-                    icon={<NowIcon icon="building-outline" size="sm" />}
-                    label="Govern"
-                    chevron
-                  />
-                  <div className="flex h-[34px] w-full items-center gap-3 px-2">
-                    <NowIcon icon="lightbulb-outline" size="sm" className="text-[#2e2e29]" />
-                    <span className="flex-1 text-sm text-black">Insights</span>
-                    <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
-                  </div>
-                  <ModuleRow
-                    icon={<NowIcon icon="gear-outline" size="sm" />}
-                    label="Settings"
-                    chevron
                   />
                 </div>
               </div>
@@ -332,35 +315,24 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
             <button
               type="button"
               className="flex h-10 items-center justify-center rounded-xl px-2.5 py-2"
-              aria-label="CSM app"
+              aria-label="ITS app"
             >
-              <img src={appTile} alt="CSM" className="size-6" />
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-violet-500 to-violet-600 text-[8px] font-medium leading-none text-white">
+                ITS
+              </span>
             </button>
             <div className="flex flex-col items-center gap-1.5 pb-1.5 pl-1 pr-1">
               <L1ModuleIcon>
                 <img src={dashboardDialIcon} alt="" className="size-4" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="lightning-outline" size="sm" />
+                <NowIcon icon="inbox-outline" size="sm" />
               </L1ModuleIcon>
               <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="clipboard-outline" size="sm" />
+                <NowIcon icon="list-outline" size="sm" />
               </L1ModuleIcon>
               <L1ModuleIcon>
-                <img src={inventoryIcon} alt="" className="size-4" />
-              </L1ModuleIcon>
-              <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="building-outline" size="sm" />
-              </L1ModuleIcon>
-              <L1ModuleIcon hasSubmenu>
-                <NowIcon
-                  icon="lightbulb-outline"
-                  size="sm"
-                  className="text-[#2e2e29]"
-                />
-              </L1ModuleIcon>
-              <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="gear-outline" size="sm" />
+                <NowIcon icon="user-group-outline" size="sm" />
               </L1ModuleIcon>
             </div>
           </div>

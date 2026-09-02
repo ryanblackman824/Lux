@@ -16,6 +16,7 @@
   --color-accent-50: #e9ffe5;
   --color-neutral: #171614;
   --color-neutral-content: #ffffff;
+  --color-ink: #232320; /* button fill/border/text - Ryan Playground 2K26 "neutral/900" */
 
   /* Base surfaces */
   --color-base-100: #ffffff;
@@ -65,8 +66,12 @@
 
   --color-yellow-50: #fffbc9;
   --color-yellow-100: #ffe04d;
+  --color-yellow-600: #8d6e00;
   --color-yellow-900: #453500;
 
+  --color-orange-50: #fff8f3;
+  --color-orange-100: #ffd9be;
+  --color-orange-600: #c14e00;
   --color-orange-900: #642100;
 
   --color-amber-100: #ffdc9d;
@@ -88,6 +93,7 @@
   --color-green-100: #a1f1c5;
   --color-green-200: #63e0a3;
   --color-green-500: #009b60;
+  --color-green-700: #006b3f;
   --color-green-900: #004023;
 
   --color-violet-500: #9969ff;

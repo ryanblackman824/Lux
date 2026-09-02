@@ -44,7 +44,7 @@ const ROWS: Row[] = [
     id: "INC0012861",
     pills: [
       { tone: "yellow", label: "Threshold exceeded for 2 days" },
-      { tone: "amber", label: "2 - High" },
+      { tone: "orange", label: "2 - High" },
     ],
     title: "Email delivery delays in EMEA",
     description:
@@ -84,7 +84,7 @@ export default function TopPriorities() {
 
   return (
     <section
-      className="flex h-[793px] w-full flex-col items-center overflow-hidden rounded-[32px] border border-white px-2.5 py-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      className="flex h-[890px] w-full flex-col items-center overflow-hidden rounded-[32px] border border-white px-2.5 py-6 shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]"
       style={{
         backgroundImage:
           "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
@@ -92,10 +92,10 @@ export default function TopPriorities() {
     >
       <div className="flex w-full flex-col items-start pb-4 px-3.5">
         <div className="flex h-10 w-full items-center justify-between gap-8">
-          <h2 className="text-[28px] tracking-[-0.4px] text-neutral">
+          <h2 className="text-[24px] tracking-[-0.24px] text-black">
             Top priorities
           </h2>
-          <NowIcon icon="arrow-right-outline" size="sm" />
+          <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
         </div>
 
         <div className="flex w-full flex-col items-center">
@@ -182,7 +182,7 @@ export default function TopPriorities() {
               AI Ranking
             </span>
             <NowIcon
-              icon="chevron-down-outline"
+              icon="caret-down-outline"
               size="xs"
               className="text-text-tertiary"
             />
@@ -203,22 +203,22 @@ export default function TopPriorities() {
                     {pill.label}
                   </Pill>
                 ))}
-                <span className="whitespace-nowrap text-xs text-text-tertiary">
+                <span className="whitespace-nowrap text-sm text-text-tertiary">
                   {row.id}
                 </span>
               </div>
               <div className="flex w-full flex-col items-start">
-                <p className="w-full font-serif text-base text-neutral">
+                <p className="w-full text-lg tracking-[-0.18px] text-black">
                   {row.title}
                 </p>
                 <div className="flex w-full items-center gap-[30px]">
-                  <p className="flex-1 text-sm text-text-tertiary">
+                  <p className="flex-1 text-sm text-text-secondary">
                     {row.description}
                   </p>
                   <Button variant={row.button.variant} className="shrink-0">
                     {row.button.label}
                     {row.button.chevron && (
-                      <NowIcon icon="chevron-down-outline" size="xs" className="-rotate-90" />
+                      <NowIcon icon="caret-down-outline" size="sm" />
                     )}
                   </Button>
                 </div>
