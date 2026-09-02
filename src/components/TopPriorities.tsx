@@ -104,7 +104,7 @@ export default function TopPriorities() {
       </div>
 
       <div className="flex w-full flex-col items-start gap-3 pt-6">
-        <div className="relative flex items-center gap-1.5 rounded-full border border-white p-1.5">
+        <div className="relative flex items-center rounded-full bg-background-tertiary p-1.5">
           <span
             className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{ left: indicator.left, width: indicator.width }}
@@ -132,8 +132,8 @@ export default function TopPriorities() {
                 )}
                 <span>{tab.label}</span>
                 <span
-                  className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] transition-colors ${
-                    isActive ? "bg-base-200 text-black" : "text-text-secondary"
+                  className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] text-text-secondary transition-colors ${
+                    isActive ? "bg-base-200" : "bg-white"
                   }`}
                 >
                   {tab.count}
