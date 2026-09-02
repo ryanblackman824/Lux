@@ -39,7 +39,7 @@ export default function PendingTasksWidget() {
           The change window begins tomorrow and all required reviews are
           complete.
         </p>
-        <Button variant="secondary" className="w-full">
+        <Button hierarchy="secondary" className="w-full">
           Approve
         </Button>
       </div>
@@ -57,7 +57,7 @@ export default function PendingTasksWidget() {
         <p className="w-full pb-4 text-sm text-text-secondary">
           The draft is missing final technical guidance and is due this week.
         </p>
-        <Button variant="secondary" className="w-full">
+        <Button hierarchy="secondary" className="w-full">
           Approve
         </Button>
         <button

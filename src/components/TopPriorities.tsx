@@ -25,7 +25,7 @@ type Row = {
   pills: { tone: PillTone; label: string }[];
   title: string;
   description: string;
-  button: { label: string; variant: "primary" | "secondary"; chevron?: boolean };
+  button: { label: string; hierarchy: "primary" | "secondary"; chevron?: boolean };
 };
 
 const ROWS: Row[] = [
@@ -38,7 +38,7 @@ const ROWS: Row[] = [
     title: "Server performance degradation",
     description:
       "Response time has exceeded threshold for 2 days and may need your escalation.",
-    button: { label: "Follow-up", variant: "primary", chevron: true },
+    button: { label: "Follow-up", hierarchy: "primary", chevron: true },
   },
   {
     id: "INC0012861",
@@ -49,7 +49,7 @@ const ROWS: Row[] = [
     title: "Email delivery delays in EMEA",
     description:
       "Mail delivery is improving after recent remediation, but affected users should be updated before further escalations are submitted.",
-    button: { label: "Follow-up", variant: "primary", chevron: true },
+    button: { label: "Follow-up", hierarchy: "primary", chevron: true },
   },
   {
     id: "INC0012993",
@@ -59,7 +59,7 @@ const ROWS: Row[] = [
     ],
     title: "Exchange server down, no inbound/outbound mail",
     description: "Critical server down, escalate mail server restart",
-    button: { label: "Follow-up", variant: "primary", chevron: true },
+    button: { label: "Follow-up", hierarchy: "primary", chevron: true },
   },
 ];
 
@@ -215,7 +215,7 @@ export default function TopPriorities() {
                   <p className="flex-1 text-sm text-text-secondary">
                     {row.description}
                   </p>
-                  <Button variant={row.button.variant} className="shrink-0">
+                  <Button hierarchy={row.button.hierarchy} className="shrink-0">
                     {row.button.label}
                     {row.button.chevron && (
                       <NowIcon icon="caret-down-outline" size="sm" />

@@ -17,6 +17,15 @@
   --color-neutral: #171614;
   --color-neutral-content: #ffffff;
   --color-ink: #232320; /* button fill/border/text - Ryan Playground 2K26 "neutral/900" */
+  --color-accent-active: #41b22d; /* accent/400 */
+
+  /* Button "neutral" ramp — Ryan Playground 2K26 button component (node 314:16722) */
+  --color-neutral-50: #f9f8f6;
+  --color-neutral-400: #c2c1be;
+  --color-neutral-500: #8a8986;
+  --color-neutral-600: #656462;
+  --color-neutral-700: #4d4c4a;
+  --color-neutral-900: #232320;
 
   /* Base surfaces */
   --color-base-100: #ffffff;

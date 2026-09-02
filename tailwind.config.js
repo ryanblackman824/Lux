@@ -20,11 +20,18 @@ export default {
           DEFAULT: "var(--color-accent)",
           content: "var(--color-accent-content)",
           hover: "var(--color-accent-hover)",
+          active: "var(--color-accent-active)",
           50: "var(--color-accent-50)",
         },
         neutral: {
           DEFAULT: "var(--color-neutral)",
           content: "var(--color-neutral-content)",
+          50: "var(--color-neutral-50)",
+          400: "var(--color-neutral-400)",
+          500: "var(--color-neutral-500)",
+          600: "var(--color-neutral-600)",
+          700: "var(--color-neutral-700)",
+          900: "var(--color-neutral-900)",
         },
         ink: "var(--color-ink)",
         base: {

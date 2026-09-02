@@ -76,7 +76,7 @@ export default function UnassignedCasesWidget() {
                 <p className="min-w-0 flex-1 truncate text-sm text-text-secondary">
                   {c.description}
                 </p>
-                <Button variant="secondary" className="shrink-0">
+                <Button hierarchy="secondary" className="shrink-0">
                   Assign
                   <NowIcon icon="caret-down-outline" size="sm" />
                 </Button>
