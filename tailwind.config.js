@@ -7,6 +7,23 @@ export default {
         sn: ["ServiceNow Sans", "Inter", "system-ui", "sans-serif"],
         serif: ["Source Serif 4", "Georgia", "serif"],
       },
+      keyframes: {
+        "shadow-in": {
+          "0%": {
+            boxShadow:
+              "0px 1px 2px -1px rgba(0,0,0,0.1), 0px 1px 2px 0px rgba(0,0,0,0.1)",
+            transform: "translateY(6px)",
+          },
+          "100%": {
+            boxShadow:
+              "0px 8px 10px -6px rgba(0,0,0,0.1), 0px 20px 25px -5px rgba(0,0,0,0.1)",
+            transform: "translateY(0)",
+          },
+        },
+      },
+      animation: {
+        "shadow-in": "shadow-in 700ms cubic-bezier(0.16,1,0.3,1) 250ms both",
+      },
       colors: {
         primary: {
           DEFAULT: "var(--color-primary)",
@@ -27,6 +44,8 @@ export default {
           DEFAULT: "var(--color-neutral)",
           content: "var(--color-neutral-content)",
           50: "var(--color-neutral-50)",
+          200: "var(--color-neutral-200)",
+          300: "var(--color-neutral-300)",
           400: "var(--color-neutral-400)",
           500: "var(--color-neutral-500)",
           600: "var(--color-neutral-600)",

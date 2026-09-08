@@ -84,11 +84,7 @@ export default function TopPriorities() {
 
   return (
     <section
-      className="flex h-[890px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white p-6"
-      style={{
-        backgroundImage:
-          "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
-      }}
+      className="flex h-[890px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white bg-white/30 p-6"
     >
       <div className="flex h-10 w-full items-center justify-between gap-8">
         <h2 className="text-[24px] tracking-[-0.24px] text-black">
@@ -97,14 +93,14 @@ export default function TopPriorities() {
         <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
       </div>
 
-      <div className="flex w-full items-center gap-2 pt-2 text-xs text-text-tertiary">
+      <div className="flex w-full items-center gap-2 pt-2 text-sm text-text-tertiary">
         <span>Curated by AI every 2 hours</span>
         <span>&bull;</span>
         <span>Refreshed just now</span>
       </div>
 
       <div className="flex w-full flex-col items-start gap-3 pt-6">
-        <div className="relative flex items-center rounded-full bg-background-tertiary p-1.5">
+        <div className="relative flex h-11 items-center rounded-full bg-background-tertiary p-1.5">
           <span
             className="absolute top-1.5 h-8 rounded-full bg-white shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{ left: indicator.left, width: indicator.width }}
@@ -120,7 +116,7 @@ export default function TopPriorities() {
                 }}
                 type="button"
                 onClick={() => setActive(tab.id)}
-                className={`relative z-10 flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-xs tracking-[-0.12px] transition-colors ${
+                className={`relative z-10 flex h-8 items-center gap-1 rounded-full pl-3 pr-1 text-sm tracking-[-0.14px] transition-colors ${
                   isActive ? "text-black" : "text-text-secondary hover:bg-white/60"
                 }`}
               >
@@ -144,18 +140,18 @@ export default function TopPriorities() {
         </div>
 
         <div className="flex h-[68px] w-full items-center gap-3 rounded-xl bg-background-tertiary pl-3 pr-4">
-          <SparkleIcon className="size-5 shrink-0 text-text-tertiary" />
-          <p className="text-xs text-text-tertiary">{AI_BANNER_TEXT}</p>
+          <SparkleIcon className="size-5 shrink-0 text-text-secondary" />
+          <p className="text-xs text-text-secondary">{AI_BANNER_TEXT}</p>
         </div>
       </div>
 
-      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start gap-6 overflow-y-auto rounded-3xl bg-white p-6 shadow-[0px_20px_12.5px_rgba(0,0,0,0.1),0px_8px_5px_rgba(0,0,0,0.1)]">
+      <div className="mt-6 flex min-h-0 w-full flex-1 flex-col items-start gap-6 overflow-y-auto rounded-3xl bg-white p-6 shadow-[0px_8px_10px_-6px_rgba(0,0,0,0.1),0px_20px_25px_-5px_rgba(0,0,0,0.1)]">
         <div className="flex w-full items-center gap-2">
           <div className="flex flex-1 items-center gap-2">
             {FILTERS.map((filter) => (
               <span
                 key={filter}
-                className="flex h-6 items-center gap-2 rounded-full border border-base-300-active pl-3 pr-2.5 text-xs tracking-[-0.12px] text-text-secondary"
+                className="flex h-6 items-center gap-2 rounded-full border border-base-300-active pl-3 pr-2.5 text-sm tracking-[-0.14px] text-text-secondary"
               >
                 {filter}
                 <NowIcon icon="close-outline" size="xs" />
@@ -166,15 +162,15 @@ export default function TopPriorities() {
             <NowIcon
               icon="arrow-up-down-outline"
               size="xs"
-              className="text-text-tertiary"
+              className="text-black"
             />
-            <span className="text-sm tracking-[-0.14px] text-text-tertiary">
+            <span className="text-sm tracking-[-0.14px] text-black">
               AI Ranking
             </span>
             <NowIcon
               icon="caret-down-outline"
               size="xs"
-              className="text-text-tertiary"
+              className="text-black"
             />
           </div>
         </div>
@@ -183,7 +179,7 @@ export default function TopPriorities() {
           <div key={i} className="flex w-full flex-col items-start gap-4">
             <div className="flex w-full items-center gap-2">
               {row.pills.map((pill, j) => (
-                <Pill key={j} tone={pill.tone} surface="white">
+                <Pill key={j} tone={pill.tone} surface="off-white">
                   {pill.label}
                 </Pill>
               ))}
@@ -191,21 +187,21 @@ export default function TopPriorities() {
                 {row.id}
               </span>
             </div>
-            <div className="flex w-full flex-col items-start gap-2">
-              <p className="w-full text-lg tracking-[-0.18px] text-black">
-                {row.title}
-              </p>
-              <div className="flex w-full items-center gap-8">
-                <p className="flex-1 text-sm text-text-secondary">
+            <div className="flex w-full items-end gap-8">
+              <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5 pl-2">
+                <p className="w-full text-lg tracking-[-0.18px] text-black">
+                  {row.title}
+                </p>
+                <p className="line-clamp-2 w-full text-sm text-text-secondary">
                   {row.description}
                 </p>
-                <Button hierarchy={row.button.hierarchy} className="shrink-0">
-                  {row.button.label}
-                  {row.button.chevron && (
-                    <NowIcon icon="caret-down-outline" size="sm" />
-                  )}
-                </Button>
               </div>
+              <Button hierarchy={row.button.hierarchy} className="shrink-0">
+                {row.button.label}
+                {row.button.chevron && (
+                  <NowIcon icon="caret-down-outline" size="sm" />
+                )}
+              </Button>
             </div>
           </div>
         ))}

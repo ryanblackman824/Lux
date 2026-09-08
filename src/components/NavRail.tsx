@@ -2,354 +2,345 @@ import { useState } from "react";
 import NowIcon from "./NowIcon";
 import SparkleIcon from "./SparkleIcon";
 import navVector from "../assets/nav-vector.svg";
-import divider from "../assets/divider.svg";
-import dashboardDialIcon from "../assets/dashboard-dial.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 import wordmark from "../assets/nav-logo-wordmark.svg";
 import panelCollapse from "../assets/panel-display-left-collapse.svg";
-import stopwatchIcon from "../assets/nav-stopwatch.svg";
-import chartBarIcon from "../assets/nav-chart-bar.svg";
-import ongoingIcon from "../assets/nav-ongoing.svg";
 import tabsetIcon from "../assets/nav-tabset.svg";
+import type { Page } from "../App";
 
-function GlobalItem({
-  children,
-  active = false,
-}: {
-  children: React.ReactNode;
-  active?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      className={`flex size-9 items-center justify-center rounded-lg transition-colors hover:bg-black/5 ${
-        active ? "bg-black/5" : ""
-      }`}
-      aria-label="Action"
-    >
-      {children}
-    </button>
-  );
-}
-
-function L1ModuleIcon({
-  children,
-  hasSubmenu = false,
-}: {
-  children: React.ReactNode;
-  hasSubmenu?: boolean;
-}) {
-  return (
-    <div className="relative flex size-8 items-center justify-center">
-      <button
-        type="button"
-        className="flex size-8 items-center justify-center rounded-2xl hover:bg-black/5"
-        aria-label="Module"
-      >
-        {children}
-      </button>
-      {hasSubmenu && (
-        <span className="absolute bottom-[3px] right-0 size-[3px] rounded-full bg-border" />
-      )}
-    </div>
-  );
-}
-
-function ExpandedItem({
+/**
+ * One row, one DOM tree for both collapsed and expanded nav — the icon slot
+ * never moves or resizes between states, only the trailing label grows in.
+ * This avoids the icon "jump" that two separate crossfading layouts caused.
+ */
+function NavRow({
   icon,
   label,
-  badge,
+  trailing,
   active = false,
+  expanded,
+  small = false,
+  compact = false,
+  onClick,
+  className = "",
 }: {
   icon: React.ReactNode;
-  label: string;
-  badge?: string;
+  label?: string;
+  trailing?: React.ReactNode;
   active?: boolean;
+  expanded: boolean;
+  small?: boolean;
+  compact?: boolean;
+  onClick?: () => void;
+  className?: string;
 }) {
+  const slotSize = small ? "size-8" : "size-9";
+  const restingWidth = small ? "w-8" : "w-9";
+  const resting = compact || !expanded;
+  // Fixed inset applied unconditionally (never toggled between states) so
+  // the icon's own x-position can never move — only the row's width
+  // animates, growing away from a stationary left edge. For non-small rows
+  // this 6px inset matches the centered logo/tile icons; the expanded width
+  // subtracts it back out so the row's right edge still lands flush.
+  const restInset = small ? "" : "ml-1.5";
+  const widthClass = resting
+    ? restingWidth
+    : small
+      ? "w-full pr-2.5"
+      : "w-[calc(100%-0.375rem)] pr-2.5";
+
   return (
     <button
       type="button"
-      className={`flex h-9 w-full items-center gap-1.5 rounded-lg px-2.5 transition-colors hover:bg-black/5 ${
-        active ? "bg-black/5" : ""
-      }`}
+      onClick={onClick}
+      className={`flex items-center rounded-full transition-[width,background-color] duration-300 ${
+        small ? "h-8" : "h-9"
+      } ${restInset} ${widthClass} ${
+        active ? "bg-white" : "hover:bg-black/5"
+      } ${className}`}
     >
-      {icon}
-      <span className="flex-1 text-left text-sm text-black">{label}</span>
-      {badge && (
-        <span className="flex size-[18px] items-center justify-center rounded-full bg-red-100 text-[10px] font-bold leading-none text-red-900">
-          {badge}
+      <span className={`flex shrink-0 items-center justify-center ${slotSize}`}>
+        {icon}
+      </span>
+      {label && (
+        <span
+          className={`flex min-w-0 flex-1 items-center gap-1 overflow-hidden whitespace-nowrap text-left text-sm text-ink transition-opacity duration-300 ${
+            expanded ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span className="min-w-0 flex-1 truncate">{label}</span>
+          {trailing}
         </span>
       )}
     </button>
   );
 }
 
-function ModuleRow({
-  icon,
-  label,
-  chevron = false,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  chevron?: boolean;
-}) {
+function IconButton({ icon }: { icon: React.ReactNode }) {
   return (
     <button
       type="button"
-      className="flex h-[34px] w-full items-center gap-3 rounded-2xl px-2 text-left hover:bg-black/5"
+      className="flex size-8 shrink-0 items-center justify-center rounded-lg hover:bg-black/5"
+      aria-label="Action"
     >
       {icon}
-      <span className="flex-1 text-sm text-black">{label}</span>
-      {chevron && (
-        <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
-      )}
     </button>
   );
 }
 
-function ExpandedContent({ onCollapse }: { onCollapse: () => void }) {
-  return (
-    <div className="absolute left-0 top-0 flex h-full w-[260px] flex-col border-r border-white pb-1 pl-1.5 pr-1.5 pt-2.5">
-      <div className="flex h-full w-full flex-1 flex-col rounded-[24px]">
-        <div className="flex w-full flex-col gap-1.5">
-          <div className="flex h-7 w-full items-center gap-1 pl-1">
-            <div className="flex flex-1 items-center overflow-hidden px-1.5">
-              <img src={wordmark} alt="ServiceNow" className="h-6 w-[137px]" />
-            </div>
-            <button
-              type="button"
-              onClick={onCollapse}
-              className="flex size-7 items-center justify-center rounded-full hover:bg-black/5"
-              aria-label="Collapse navigation"
-            >
-              <img src={panelCollapse} alt="" className="size-4" />
-            </button>
-          </div>
+export default function NavRail({
+  currentPage,
+  onNavigate,
+}: {
+  currentPage: Page;
+  onNavigate: (page: Page) => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const [browseOpen, setBrowseOpen] = useState(false);
+  const [activeAppsOpen, setActiveAppsOpen] = useState(true);
 
-          <div className="flex w-full flex-col gap-4">
-            <ExpandedItem
-              icon={<NowIcon icon="home-outline" size="md" />}
-              label="Home"
-              active
+  function handleNavigate(page: Page) {
+    onNavigate(page);
+    setExpanded(false);
+  }
+
+  return (
+    <nav
+      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden bg-white/30 backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        expanded ? "w-[260px] border-r border-neutral-300" : "w-[60px]"
+      }`}
+      aria-label="Primary"
+    >
+      <div className="flex h-full w-full flex-col items-center pb-1 pl-1.5 pr-1.5 pt-2.5">
+        {/* Logo / collapse toggle */}
+        <div className="flex h-9 w-full items-center">
+          <button
+            type="button"
+            onClick={() => setExpanded((e) => !e)}
+            className="ml-1.5 flex size-9 shrink-0 items-center justify-center rounded-full hover:bg-black/5"
+            aria-label={expanded ? "Collapse navigation" : "Expand navigation"}
+          >
+            <img
+              src={expanded ? panelCollapse : navVector}
+              alt="ServiceNow"
+              className={expanded ? "size-4" : "h-5 w-[22px]"}
             />
-            <ExpandedItem
-              icon={<SparkleIcon className="size-5 text-accent" />}
-              label="Ask Otto"
-            />
-            <ExpandedItem
-              icon={<NowIcon icon="magnifying-glass-outline" size="md" />}
-              label="Search"
-            />
-            <ExpandedItem
-              icon={<NowIcon icon="bell-outline" size="md" />}
-              label="Notifications"
-              badge="12"
-            />
-            <button
-              type="button"
-              className="flex h-9 w-full items-center gap-1.5 rounded-lg px-2.5 hover:bg-black/5"
-            >
-              <NowIcon icon="compass-outline" size="md" />
-              <span className="flex-1 text-left text-sm text-black">
-                Browse
-              </span>
-              <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
-            </button>
+          </button>
+          <div
+            className={`flex min-w-0 flex-1 items-center overflow-hidden transition-[max-width,opacity] duration-300 ${
+              expanded ? "ml-1 max-w-[160px] opacity-100" : "max-w-0 opacity-0"
+            }`}
+          >
+            <img src={wordmark} alt="" className="h-6 w-[137px]" />
           </div>
         </div>
 
-        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto pt-4">
-          <div className="border-b border-border-subtle pb-0.5">
-            <button
-              type="button"
-              className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
-            >
-              <img src={tabsetIcon} alt="" className="size-5" />
-              <span className="flex-1 text-left text-sm text-black">
-                Your pinned
+        {/* Main nav items */}
+        <div className="flex w-full flex-col gap-1 pt-3">
+          <NavRow
+            expanded={expanded}
+            active={currentPage === "home"}
+            onClick={() => handleNavigate("home")}
+            icon={
+              <NowIcon
+                icon={currentPage === "home" ? "home-fill" : "home-outline"}
+                size="md"
+              />
+            }
+            label="Home"
+          />
+          <NavRow
+            expanded={expanded}
+            icon={<SparkleIcon className="size-5 text-black" />}
+            label="Ask Otto"
+          />
+          <NavRow
+            expanded={expanded}
+            icon={<NowIcon icon="magnifying-glass-outline" size="md" />}
+            label="Search"
+          />
+          <NavRow
+            expanded={expanded}
+            icon={
+              <span className="relative">
+                <NowIcon icon="bell-outline" size="md" />
+                <span className="absolute -bottom-1 -right-1.5 flex size-[18px] items-center justify-center rounded-full bg-red-600 text-[10px] font-bold leading-none text-white">
+                  12
+                </span>
               </span>
-              <NowIcon icon="chevron-down-outline" size="xs" className="text-[#2e2e29]" />
-            </button>
-          </div>
-
-          <div className="flex flex-col gap-2 pt-3">
-            <button
-              type="button"
-              className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
-            >
-              <img src={tabsetIcon} alt="" className="size-5" />
-              <span className="flex-1 text-left text-sm text-black">
-                Active apps
-              </span>
-              <NowIcon icon="chevron-up-outline" size="xs" className="text-[#2e2e29]" />
-            </button>
-            <div className="px-2">
-              <div className="w-full overflow-hidden rounded-xl bg-[#f9f8f6] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
-                <div className="flex items-center gap-2 px-2.5 py-2">
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-violet-500 to-violet-600 text-[8px] font-medium leading-none text-white">
-                    ITS
-                  </span>
-                  <span className="flex-1 text-sm text-secondary-content">ITS</span>
-                </div>
-                <div className="flex flex-col gap-0 px-2 pb-1.5">
-                  <ModuleRow
-                    icon={<img src={dashboardDialIcon} alt="" className="size-4" />}
-                    label="Overview"
-                  />
-                  <ModuleRow
-                    icon={<NowIcon icon="inbox-outline" size="sm" />}
-                    label="Activity Center"
-                    chevron
-                  />
-                  <ModuleRow
-                    icon={<NowIcon icon="list-outline" size="sm" />}
-                    label="Plan"
-                    chevron
-                  />
-                  <ModuleRow
-                    icon={<NowIcon icon="user-group-outline" size="sm" />}
-                    label="Inventory"
-                  />
-                </div>
-              </div>
+            }
+            label="Notifications"
+          />
+          <NavRow
+            expanded={expanded}
+            onClick={() => setBrowseOpen((o) => !o)}
+            icon={<NowIcon icon="compass-outline" size="md" />}
+            label="Browse"
+            trailing={
+              <NowIcon
+                icon={browseOpen ? "chevron-up-outline" : "chevron-down-outline"}
+                size="xs"
+                className="text-ink"
+              />
+            }
+          />
+          {expanded && browseOpen && (
+            <div className="flex w-full flex-col gap-1 pl-8 pr-2">
+              <NavRow
+                expanded
+                icon={<NowIcon icon="list-search-outline" size="md" />}
+                label="Navigate to"
+              />
+              <NavRow
+                expanded
+                icon={<NowIcon icon="change-outline" size="md" />}
+                label="History"
+              />
+              <NavRow
+                expanded
+                icon={<NowIcon icon="star-outline" size="md" />}
+                label="Favorites"
+              />
             </div>
-            <div className="px-2">
+          )}
+        </div>
+
+        {/* Scrollable middle */}
+        <div className="flex w-full min-h-0 flex-1 flex-col items-center overflow-y-auto pt-4">
+          <div
+            className={`grid w-full transition-[grid-template-rows] duration-300 ease-out ${
+              expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+          >
+            <div
+              className={`flex min-h-0 flex-col overflow-hidden transition-opacity duration-300 ${
+                expanded ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="w-full border-b border-border-subtle pb-0.5">
+                <button
+                  type="button"
+                  className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
+                >
+                  <img src={tabsetIcon} alt="" className="size-5" />
+                  <span className="flex-1 text-left text-sm text-ink">
+                    Your pinned
+                  </span>
+                  <NowIcon icon="chevron-down-outline" size="xs" className="text-ink" />
+                </button>
+              </div>
               <button
                 type="button"
-                className="flex h-8 w-full items-center justify-center gap-1 rounded-full border border-[#2e2e29] text-xs text-black hover:bg-black/5"
+                onClick={() => setActiveAppsOpen((o) => !o)}
+                className="mt-3 flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
               >
-                <NowIcon icon="plus-outline" size="sm" />
-                Add app or workspace
+                <img src={tabsetIcon} alt="" className="size-5" />
+                <span className="flex-1 text-left text-sm text-ink">
+                  Active apps
+                </span>
+                <NowIcon
+                  icon={
+                    activeAppsOpen ? "chevron-up-outline" : "chevron-down-outline"
+                  }
+                  size="xs"
+                  className="text-ink"
+                />
               </button>
             </div>
           </div>
-        </div>
 
-        <div className="flex w-full items-center gap-2 border-t border-border-subtle px-1.5 py-1.5">
-          <img
-            src={avatarPhoto}
-            alt="Profile"
-            className="size-[30px] shrink-0 rounded-full object-cover"
-          />
-          <span className="flex-1 text-sm text-secondary-content">Renee</span>
-          <div className="flex items-center gap-0.5">
-            <GlobalItem>
-              <img src={stopwatchIcon} alt="" className="size-4" />
-            </GlobalItem>
-            <GlobalItem>
-              <img src={chartBarIcon} alt="" className="size-4" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon icon="phone-outline" size="sm" className="text-[#2e2e29]" />
-            </GlobalItem>
-            <GlobalItem>
-              <img src={ongoingIcon} alt="" className="size-4" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon icon="circle-question-outline" size="sm" className="text-[#2e2e29]" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon icon="globe-outline" size="sm" className="text-[#2e2e29]" />
-            </GlobalItem>
-            <GlobalItem>
-              <NowIcon icon="ellipsis-v-outline" size="sm" className="text-[#2e2e29]" />
-            </GlobalItem>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CollapsedContent({ onExpand }: { onExpand: () => void }) {
-  return (
-    <div className="absolute left-0 top-0 flex h-full w-[60px] items-start justify-center gap-2 pb-2 pl-1.5 pr-1.5 pt-2.5">
-      <div className="isolate flex h-full w-12 flex-col items-center gap-1.5 rounded-3xl">
-        {/* Logo */}
-        <button
-          type="button"
-          onClick={onExpand}
-          className="flex w-full items-center justify-center rounded-2xl py-1 hover:bg-black/5"
-          aria-label="Expand navigation"
-        >
-          <img src={navVector} alt="ServiceNow" className="h-5 w-[22px]" />
-        </button>
-
-        {/* Global items */}
-        <div className="flex w-full flex-col items-center gap-4 rounded-2xl">
-          <GlobalItem active>
-            <NowIcon icon="home-outline" size="md" />
-          </GlobalItem>
-          <GlobalItem>
-            <SparkleIcon className="size-5 text-accent" />
-          </GlobalItem>
-          <GlobalItem>
-            <NowIcon icon="magnifying-glass-outline" size="md" />
-          </GlobalItem>
-          <GlobalItem>
-            <span className="relative">
-              <NowIcon icon="bell-outline" size="md" />
-              <span className="absolute -right-2.5 -top-1.5 flex size-[18px] items-center justify-center rounded-full bg-red-100 text-[10px] font-bold leading-none text-red-900">
-                12
-              </span>
-            </span>
-          </GlobalItem>
-          <GlobalItem>
-            <NowIcon icon="compass-outline" size="md" />
-          </GlobalItem>
-        </div>
-
-        <img src={divider} alt="" className="h-1 w-[33px]" />
-
-        {/* Standalone folder item */}
-        <GlobalItem>
-          <NowIcon icon="folder-outline" size="md" />
-        </GlobalItem>
-
-        <img src={divider} alt="" className="h-1 w-[33px]" />
-
-        {/* Active app */}
-        <div className="flex min-h-0 flex-1 flex-col items-center gap-1 overflow-y-auto px-2.5">
-          <div className="flex flex-col items-center gap-px overflow-hidden rounded-xl bg-[#f9f8f6] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
-            <button
-              type="button"
-              className="flex h-10 items-center justify-center rounded-xl px-2.5 py-2"
-              aria-label="ITS app"
+          <div
+            className={`grid w-full transition-[grid-template-rows] duration-300 ease-out ${
+              !expanded || activeAppsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+          >
+            <div
+              className={`min-h-0 overflow-hidden transition-opacity duration-300 ${
+                !expanded || activeAppsOpen ? "opacity-100" : "opacity-0"
+              }`}
             >
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-violet-500 to-violet-600 text-[8px] font-medium leading-none text-white">
-                ITS
-              </span>
-            </button>
-            <div className="flex flex-col items-center gap-1 pb-1.5 pl-1 pr-1">
-              <L1ModuleIcon>
-                <img src={dashboardDialIcon} alt="" className="size-4" />
-              </L1ModuleIcon>
-              <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="inbox-outline" size="sm" />
-              </L1ModuleIcon>
-              <L1ModuleIcon hasSubmenu>
-                <NowIcon icon="list-outline" size="sm" />
-              </L1ModuleIcon>
-              <L1ModuleIcon>
-                <NowIcon icon="user-group-outline" size="sm" />
-              </L1ModuleIcon>
+              <div className="mt-3 flex w-full flex-col gap-2 rounded-xl bg-[#f9f8f6] px-2 pb-2 pt-3 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
+                <NavRow
+                  expanded={expanded}
+                  small
+                  icon={
+                    <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-violet-500 to-violet-600 text-[8px] font-medium leading-none text-white ring-1 ring-violet-500 ring-offset-2 ring-offset-[#f9f8f6]">
+                      ITS
+                    </span>
+                  }
+                  label="ITS"
+                />
+                <NavRow
+                  expanded={expanded}
+                  small
+                  icon={
+                    <NowIcon icon="dashboard-dial" size="sm" className="text-neutral-700" />
+                  }
+                  label="Overview"
+                />
+                <NavRow
+                  expanded={expanded}
+                  small
+                  icon={
+                    <NowIcon icon="inbox-outline" size="sm" className="text-neutral-700" />
+                  }
+                  label="Inbox"
+                />
+                <NavRow
+                  expanded={expanded}
+                  small
+                  active={currentPage === "list"}
+                  onClick={() => handleNavigate("list")}
+                  icon={
+                    <NowIcon icon="list-outline" size="sm" className="text-neutral-700" />
+                  }
+                  label="List"
+                />
+                <NavRow
+                  expanded={expanded}
+                  small
+                  icon={
+                    <NowIcon icon="user-group-outline" size="sm" className="text-neutral-700" />
+                  }
+                  label="Teams"
+                />
+                <NavRow
+                  expanded={expanded}
+                  small
+                  active={currentPage === "case"}
+                  onClick={() => handleNavigate("case")}
+                  icon={
+                    <NowIcon icon="briefcase-outline" size="sm" className="text-neutral-700" />
+                  }
+                  label="Case page"
+                />
+              </div>
             </div>
           </div>
-          <button
-            type="button"
-            className="mt-1 flex size-8 items-center justify-center rounded-full border border-[#2e2e29]/20 hover:bg-black/5"
-            aria-label="Add app"
-          >
-            <NowIcon icon="plus-outline" size="sm" />
-          </button>
+
+          {expanded ? (
+            activeAppsOpen && (
+              <button
+                type="button"
+                className="mt-1 flex h-8 w-full items-center justify-center rounded-full text-sm tracking-[-0.14px] text-ink hover:bg-black/5"
+              >
+                Manage apps
+              </button>
+            )
+          ) : (
+            <button
+              type="button"
+              className="mt-1 flex size-8 items-center justify-center rounded-full border border-[#2e2e29]/20 hover:bg-black/5"
+              aria-label="Add app"
+            >
+              <NowIcon icon="plus-outline" size="sm" />
+            </button>
+          )}
         </div>
 
-        {/* Sticky footer */}
-        <div className="flex w-full flex-col items-center gap-2 border-t border-background-tertiary pt-2">
-          <GlobalItem>
-            <NowIcon icon="ellipsis-v-outline" size="sm" />
-          </GlobalItem>
-          <span className="relative">
+        {/* Footer */}
+        <div className="flex w-full items-center gap-2 border-t border-border-subtle pt-1.5">
+          <span className="relative shrink-0">
             <img
               src={avatarPhoto}
               alt="Profile"
@@ -357,35 +348,45 @@ function CollapsedContent({ onExpand }: { onExpand: () => void }) {
             />
             <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full border-2 border-white bg-[#4fd15c]" />
           </span>
+          <span
+            className={`overflow-hidden whitespace-nowrap text-sm text-ink transition-[max-width,opacity] duration-300 ${
+              expanded ? "max-w-[80px] opacity-100" : "max-w-0 opacity-0"
+            }`}
+          >
+            Renee
+          </span>
+          {expanded ? (
+            <div className="flex items-center gap-0.5">
+              <IconButton
+                icon={<NowIcon icon="globe-outline" size="sm" className="text-neutral-700" />}
+              />
+              <IconButton
+                icon={
+                  <NowIcon
+                    icon="circle-question-outline"
+                    size="sm"
+                    className="text-neutral-700"
+                  />
+                }
+              />
+              <IconButton
+                icon={
+                  <span className="relative">
+                    <NowIcon icon="ongoing-outline" size="sm" className="text-neutral-700" />
+                    <span className="absolute -right-0.5 -top-0.5 size-1.5 rounded-full bg-red-600" />
+                  </span>
+                }
+              />
+              <IconButton
+                icon={
+                  <NowIcon icon="ellipsis-v-outline" size="sm" className="text-neutral-700" />
+                }
+              />
+            </div>
+          ) : (
+            <IconButton icon={<NowIcon icon="ellipsis-v-outline" size="sm" />} />
+          )}
         </div>
-      </div>
-    </div>
-  );
-}
-
-export default function NavRail() {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <nav
-      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden border-r border-border-subtle bg-white/[0.33] backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        expanded ? "w-[260px]" : "w-[60px]"
-      }`}
-      aria-label="Primary"
-    >
-      <div
-        className={`transition-opacity duration-150 ease-out ${
-          expanded ? "pointer-events-none opacity-0" : "opacity-100"
-        }`}
-      >
-        <CollapsedContent onExpand={() => setExpanded(true)} />
-      </div>
-      <div
-        className={`transition-opacity delay-150 duration-200 ease-out ${
-          expanded ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
-        <ExpandedContent onCollapse={() => setExpanded(false)} />
       </div>
     </nav>
   );

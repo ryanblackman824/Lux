@@ -40,7 +40,7 @@ export default function UnassignedCasesWidget() {
       className="flex h-[511px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[32px] border border-white"
       style={{
         backgroundImage:
-          "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
+          "linear-gradient(135.87deg, rgba(255, 255, 255, 0) 75.623%, rgb(255, 255, 255) 96.755%), linear-gradient(158.32deg, rgba(248, 248, 248, 0.15) 11.724%, rgb(248, 248, 248) 46.191%)",
       }}
     >
       <div className="flex w-full items-center gap-3 px-8 py-6">
@@ -61,7 +61,7 @@ export default function UnassignedCasesWidget() {
             <div key={i} className="flex w-full min-w-0 flex-col items-start gap-4">
               <div className="flex w-full items-center gap-2">
                 {c.pills.map((pill, j) => (
-                  <Pill key={j} tone={pill.tone} surface="white">
+                  <Pill key={j} tone={pill.tone} surface="off-white">
                     {pill.label}
                   </Pill>
                 ))}
@@ -69,19 +69,19 @@ export default function UnassignedCasesWidget() {
                   {c.id}
                 </span>
               </div>
-              <div className="flex w-full min-w-0 flex-col items-start gap-2">
-                <p className="w-full text-lg tracking-[-0.18px] text-black">
-                  {c.title}
-                </p>
-                <div className="flex w-full min-w-0 items-center gap-8">
-                  <p className="min-w-0 flex-1 truncate text-sm text-text-secondary">
+              <div className="flex w-full min-w-0 items-end gap-8">
+                <div className="flex min-w-0 flex-1 flex-col items-start gap-2">
+                  <p className="w-full text-lg tracking-[-0.18px] text-black">
+                    {c.title}
+                  </p>
+                  <p className="line-clamp-2 w-full text-sm text-text-secondary">
                     {c.description}
                   </p>
-                  <Button hierarchy="secondary" className="shrink-0">
-                    Assign
-                    <NowIcon icon="caret-down-outline" size="sm" />
-                  </Button>
                 </div>
+                <Button hierarchy="primary" className="shrink-0">
+                  Assign
+                  <NowIcon icon="caret-down-outline" size="sm" />
+                </Button>
               </div>
             </div>
           ))}

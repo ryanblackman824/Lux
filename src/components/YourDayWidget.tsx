@@ -5,13 +5,13 @@ import calendarCheck from "../assets/calendar-check.svg";
 export default function YourDayWidget() {
   return (
     <section
-      className="flex h-[350px] min-w-0 flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white p-6"
+      className="flex h-[350px] min-w-0 flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white"
       style={{
         backgroundImage:
-          "linear-gradient(153.07deg, rgba(249, 248, 246, 0.3) 2.41%, #F9F8F6 39.31%)",
+          "linear-gradient(126.11deg, rgba(255, 255, 255, 0) 75.623%, rgb(255, 255, 255) 96.755%), linear-gradient(150.67deg, rgba(248, 248, 248, 0.15) 11.724%, rgb(248, 248, 248) 46.191%)",
       }}
     >
-      <div className="flex w-full flex-col items-start">
+      <div className="flex w-full min-w-0 flex-col items-start p-6">
         <div className="flex w-full items-center justify-between">
           <h2 className="flex-1 text-lg tracking-[-0.18px] text-black">
             Today&rsquo;s progress
@@ -20,14 +20,15 @@ export default function YourDayWidget() {
         </div>
         <p className="pt-2 text-sm text-text-secondary">Due today</p>
 
-        <div className="flex w-full flex-col items-start pt-6 text-black">
-          <p className="text-[40px] leading-none tracking-[-0.4px]">8</p>
-          <p className="pt-1 text-sm">Remaining</p>
-        </div>
-
-        <div className="flex w-full flex-col items-start gap-3 pt-1">
-          <Pill tone="green">5 of 13 resolved</Pill>
-          <div className="h-[13px] w-full overflow-hidden rounded-full bg-background-tertiary">
+        <div className="flex w-full flex-col items-start gap-3 pt-6 text-black">
+          <div className="flex w-full items-end justify-between">
+            <div className="flex flex-col items-start justify-center gap-1">
+              <p className="text-[40px] leading-none tracking-[-0.4px]">8</p>
+              <p className="text-sm">Remaining</p>
+            </div>
+            <Pill tone="green">5 of 13 resolved</Pill>
+          </div>
+          <div className="h-3 w-full overflow-hidden rounded-full bg-background-tertiary">
             <div
               className="h-full rounded-full bg-success"
               style={{ width: "38%" }}

@@ -41,7 +41,7 @@ export default function Pill({
 }) {
   return (
     <span
-      className={`flex h-6 items-center whitespace-nowrap rounded-[4px] border px-2 text-xs tracking-[-0.12px] ${TONES[surface][tone]}`}
+      className={`flex h-6 items-center gap-2 whitespace-nowrap rounded-[4px] border px-2 text-xs tracking-[-0.12px] ${TONES[surface][tone]}`}
     >
       {children}
     </span>

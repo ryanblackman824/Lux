@@ -21,6 +21,8 @@
 
   /* Button "neutral" ramp — Ryan Playground 2K26 button component (node 314:16722) */
   --color-neutral-50: #f9f8f6;
+  --color-neutral-200: #f4f3f0; /* same value as base-200 */
+  --color-neutral-300: #e3e2df; /* Ryan Playground 2K26 navigation border, node 314:15355 */
   --color-neutral-400: #c2c1be;
   --color-neutral-500: #8a8986;
   --color-neutral-600: #656462;
@@ -123,4 +125,7 @@
 body {
   margin: 0;
   font-family: "ServiceNow Sans", Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
