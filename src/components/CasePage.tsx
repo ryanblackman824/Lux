@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import NowIcon from "./NowIcon";
 import SparkleIcon from "./SparkleIcon";
-import Button from "./Button";
+import Button, { HIERARCHIES } from "./Button";
+import ButtonSplit from "./ButtonSplit";
 import Pill from "./Pill";
 import avatarPhoto from "../assets/avatar-photo.png";
 
@@ -24,24 +25,6 @@ function IconButton({
   );
 }
 
-function SplitButton({
-  icon,
-  label,
-}: {
-  icon?: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      className="flex h-8 items-center gap-2 rounded-full bg-neutral-50 pl-4 pr-2 text-sm tracking-[-0.14px] text-neutral-900 hover:bg-neutral-100"
-    >
-      {icon}
-      {label}
-      <NowIcon icon="caret-down-outline" size="xs" />
-    </button>
-  );
-}
 
 function CaseField({
   label,
@@ -240,19 +223,17 @@ export default function CasePage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <SplitButton
-              icon={<NowIcon icon="lightning-outline" size="sm" />}
-              label="Macros"
-            />
-            <Button hierarchy="tertiary" className="gap-2">
+            <ButtonSplit hierarchy="tertiary" caretLabel="Macros options">
+              <NowIcon icon="lightning-outline" size="sm" />
+              Macros
+            </ButtonSplit>
+            <ButtonSplit hierarchy="tertiary" caretLabel="Actions options">
               Actions
-              <NowIcon icon="caret-down-outline" size="xs" />
-            </Button>
+            </ButtonSplit>
             <span className="mx-1 h-6 w-px bg-neutral-300" />
-            <Button hierarchy="tertiary" className="gap-2">
+            <ButtonSplit hierarchy="tertiary" caretLabel="Assign to me options">
               Assign to me
-              <NowIcon icon="caret-down-outline" size="xs" />
-            </Button>
+            </ButtonSplit>
             <Button hierarchy="tertiary">Save</Button>
             <Button hierarchy="primary">Assign to me</Button>
           </div>
@@ -316,7 +297,17 @@ export default function CasePage() {
               <IconButton
                 icon={<NowIcon icon="download-outline" size="sm" />}
               />
-              <Button hierarchy="secondary">Sources and more</Button>
+              <button
+                type="button"
+                className={`inline-flex h-8 items-center gap-2 whitespace-nowrap rounded-full px-3 text-xs tracking-[-0.14px] transition-colors ${HIERARCHIES.secondary}`}
+              >
+                <span className="flex items-center">
+                  <span className="-mr-1 size-4 rounded-full border border-white bg-green-600" />
+                  <span className="-mr-1 size-4 rounded-full border border-white bg-neutral-900" />
+                  <span className="size-4 rounded-full border border-white bg-blue-500" />
+                </span>
+                Sources and more
+              </button>
             </div>
           </div>
 

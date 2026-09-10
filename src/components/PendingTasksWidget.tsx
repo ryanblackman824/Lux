@@ -10,7 +10,7 @@ function Tag({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function PendingTasksWidget() {
+export default function PendingTasksWidget({ delay = 0 }: { delay?: number }) {
   const [secondTaskRevealed, setSecondTaskRevealed] = useState(false);
   const secondTaskRef = useRef<HTMLDivElement>(null);
 
@@ -30,10 +30,11 @@ export default function PendingTasksWidget() {
 
   return (
     <section
-      className="flex h-[350px] min-w-0 flex-1 flex-col items-start overflow-hidden rounded-[32px] border border-white"
+      className="flex h-[350px] min-w-0 flex-1 animate-card-in flex-col items-start overflow-hidden rounded-[32px] border border-white opacity-0"
       style={{
         backgroundImage:
           "linear-gradient(126.11deg, rgba(255, 255, 255, 0) 75.623%, rgb(255, 255, 255) 96.755%), linear-gradient(150.67deg, rgba(248, 248, 248, 0.15) 11.724%, rgb(248, 248, 248) 46.191%)",
+        animationDelay: `${delay}ms`,
       }}
     >
       <div className="flex w-full items-center gap-3 px-6 pt-6">

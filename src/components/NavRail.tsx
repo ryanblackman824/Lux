@@ -5,7 +5,6 @@ import navVector from "../assets/nav-vector.svg";
 import avatarPhoto from "../assets/avatar-photo.png";
 import wordmark from "../assets/nav-logo-wordmark.svg";
 import panelCollapse from "../assets/panel-display-left-collapse.svg";
-import tabsetIcon from "../assets/nav-tabset.svg";
 import type { Page } from "../App";
 
 /**
@@ -97,7 +96,6 @@ export default function NavRail({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [browseOpen, setBrowseOpen] = useState(false);
-  const [activeAppsOpen, setActiveAppsOpen] = useState(true);
 
   function handleNavigate(page: Page) {
     onNavigate(page);
@@ -106,12 +104,12 @@ export default function NavRail({
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden bg-white/30 backdrop-blur-[20px] transition-[width] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        expanded ? "w-[260px] border-r border-neutral-300" : "w-[60px]"
+      className={`fixed left-0 top-0 z-10 h-screen overflow-hidden border-r border-neutral-300 transition-[width,background-color] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        expanded ? "w-[260px] bg-white/30 backdrop-blur-[20px]" : "w-[60px] bg-neutral-200"
       }`}
       aria-label="Primary"
     >
-      <div className="flex h-full w-full flex-col items-center pb-1 pl-1.5 pr-1.5 pt-2.5">
+      <div className="flex h-full w-full flex-col items-center pb-2 pl-1.5 pr-1.5 pt-2.5">
         {/* Logo / collapse toggle */}
         <div className="flex h-9 w-full items-center">
           <button
@@ -136,7 +134,7 @@ export default function NavRail({
         </div>
 
         {/* Main nav items */}
-        <div className="flex w-full flex-col gap-1 pt-3">
+        <div className="flex w-full flex-col gap-3 pt-3">
           <NavRow
             expanded={expanded}
             active={currentPage === "home"}
@@ -206,7 +204,7 @@ export default function NavRail({
         </div>
 
         {/* Scrollable middle */}
-        <div className="flex w-full min-h-0 flex-1 flex-col items-center overflow-y-auto pt-4">
+        <div className="flex w-full min-h-0 flex-1 flex-col items-center overflow-y-auto">
           <div
             className={`grid w-full transition-[grid-template-rows] duration-300 ease-out ${
               expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
@@ -217,49 +215,23 @@ export default function NavRail({
                 expanded ? "opacity-100" : "opacity-0"
               }`}
             >
-              <div className="w-full border-b border-border-subtle pb-0.5">
-                <button
-                  type="button"
-                  className="flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
-                >
-                  <img src={tabsetIcon} alt="" className="size-5" />
+              <div className="w-full pt-3">
+                <div className="flex h-7 w-full items-center px-2.5">
                   <span className="flex-1 text-left text-sm text-ink">
                     Your pinned
                   </span>
-                  <NowIcon icon="chevron-down-outline" size="xs" className="text-ink" />
-                </button>
+                </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setActiveAppsOpen((o) => !o)}
-                className="mt-3 flex h-7 w-full items-center gap-2 rounded-lg px-2.5 hover:bg-black/5"
-              >
-                <img src={tabsetIcon} alt="" className="size-5" />
+              <div className="mt-3 flex h-7 w-full items-center px-2.5">
                 <span className="flex-1 text-left text-sm text-ink">
                   Active apps
                 </span>
-                <NowIcon
-                  icon={
-                    activeAppsOpen ? "chevron-up-outline" : "chevron-down-outline"
-                  }
-                  size="xs"
-                  className="text-ink"
-                />
-              </button>
+              </div>
             </div>
           </div>
 
-          <div
-            className={`grid w-full transition-[grid-template-rows] duration-300 ease-out ${
-              !expanded || activeAppsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-            }`}
-          >
-            <div
-              className={`min-h-0 overflow-hidden transition-opacity duration-300 ${
-                !expanded || activeAppsOpen ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <div className="mt-3 flex w-full flex-col gap-2 rounded-xl bg-[#f9f8f6] px-2 pb-2 pt-3 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
+          <div className="w-full py-0.5">
+            <div className="mt-2.5 flex w-full flex-col gap-2 rounded-xl bg-[#f9f8f6] px-2 py-2.5 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1),0px_1px_2px_-1px_rgba(0,0,0,0.1)]">
                 <NavRow
                   expanded={expanded}
                   small
@@ -314,23 +286,20 @@ export default function NavRail({
                   }
                   label="Case page"
                 />
-              </div>
             </div>
           </div>
 
           {expanded ? (
-            activeAppsOpen && (
-              <button
-                type="button"
-                className="mt-1 flex h-8 w-full items-center justify-center rounded-full text-sm tracking-[-0.14px] text-ink hover:bg-black/5"
-              >
-                Manage apps
-              </button>
-            )
+            <button
+              type="button"
+              className="mt-1 flex h-8 w-full items-center justify-center rounded-full text-sm tracking-[-0.14px] text-ink hover:bg-black/5"
+            >
+              Manage apps
+            </button>
           ) : (
             <button
               type="button"
-              className="mt-1 flex size-8 items-center justify-center rounded-full border border-[#2e2e29]/20 hover:bg-black/5"
+              className="mt-1 flex size-8 items-center justify-center rounded-full hover:bg-black/5"
               aria-label="Add app"
             >
               <NowIcon icon="plus-outline" size="sm" />
@@ -339,23 +308,19 @@ export default function NavRail({
         </div>
 
         {/* Footer */}
-        <div className="flex w-full items-center gap-2 border-t border-border-subtle pt-1.5">
-          <span className="relative shrink-0">
-            <img
-              src={avatarPhoto}
-              alt="Profile"
-              className="size-8 rounded-full object-cover"
-            />
-            <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full border-2 border-white bg-[#4fd15c]" />
-          </span>
-          <span
-            className={`overflow-hidden whitespace-nowrap text-sm text-ink transition-[max-width,opacity] duration-300 ${
-              expanded ? "max-w-[80px] opacity-100" : "max-w-0 opacity-0"
-            }`}
-          >
-            Renee
-          </span>
-          {expanded ? (
+        {expanded ? (
+          <div className="flex w-full items-center gap-2">
+            <span className="relative shrink-0">
+              <img
+                src={avatarPhoto}
+                alt="Profile"
+                className="size-8 rounded-full bg-indigo-200 object-cover"
+              />
+              <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full border-2 border-white bg-[#4fd15c]" />
+            </span>
+            <span className="overflow-hidden whitespace-nowrap text-sm text-ink">
+              Renee
+            </span>
             <div className="flex items-center gap-0.5">
               <IconButton
                 icon={<NowIcon icon="globe-outline" size="sm" className="text-neutral-700" />}
@@ -383,10 +348,20 @@ export default function NavRail({
                 }
               />
             </div>
-          ) : (
+          </div>
+        ) : (
+          <div className="flex w-full flex-col items-center">
             <IconButton icon={<NowIcon icon="ellipsis-v-outline" size="sm" />} />
-          )}
-        </div>
+            <span className="relative shrink-0">
+              <img
+                src={avatarPhoto}
+                alt="Profile"
+                className="size-8 rounded-full bg-indigo-200 object-cover"
+              />
+              <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full border-2 border-white bg-[#4fd15c]" />
+            </span>
+          </div>
+        )}
       </div>
     </nav>
   );

@@ -1,5 +1,5 @@
 import Pill, { type PillTone } from "./Pill";
-import Button from "./Button";
+import ButtonSplit from "./ButtonSplit";
 import NowIcon from "./NowIcon";
 
 const CASES: {
@@ -34,13 +34,18 @@ const CASES: {
   },
 ];
 
-export default function UnassignedCasesWidget() {
+export default function UnassignedCasesWidget({
+  delay = 0,
+}: {
+  delay?: number;
+}) {
   return (
     <section
-      className="flex h-[511px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[32px] border border-white"
+      className="flex h-[511px] w-full min-w-0 animate-card-in flex-col items-start overflow-hidden rounded-[32px] border border-white opacity-0"
       style={{
         backgroundImage:
           "linear-gradient(135.87deg, rgba(255, 255, 255, 0) 75.623%, rgb(255, 255, 255) 96.755%), linear-gradient(158.32deg, rgba(248, 248, 248, 0.15) 11.724%, rgb(248, 248, 248) 46.191%)",
+        animationDelay: `${delay}ms`,
       }}
     >
       <div className="flex w-full items-center gap-3 px-8 py-6">
@@ -78,10 +83,9 @@ export default function UnassignedCasesWidget() {
                     {c.description}
                   </p>
                 </div>
-                <Button hierarchy="primary" className="shrink-0">
+                <ButtonSplit hierarchy="primary" className="shrink-0" caretLabel="Assign options">
                   Assign
-                  <NowIcon icon="caret-down-outline" size="sm" />
-                </Button>
+                </ButtonSplit>
               </div>
             </div>
           ))}

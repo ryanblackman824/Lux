@@ -1,8 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import SparkleIcon from "./SparkleIcon";
 import Button from "./Button";
+import ButtonSplit from "./ButtonSplit";
 import Pill, { type PillTone } from "./Pill";
 import NowIcon from "./NowIcon";
+import AiGeneratedGlow from "./AiGeneratedGlow";
 
 const TABS: {
   id: string;
@@ -63,7 +65,7 @@ const ROWS: Row[] = [
   },
 ];
 
-export default function TopPriorities() {
+export default function TopPriorities({ delay = 0 }: { delay?: number }) {
   const [active, setActive] = useState<string>("all");
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
@@ -84,8 +86,11 @@ export default function TopPriorities() {
 
   return (
     <section
-      className="flex h-[890px] w-full flex-col items-start overflow-hidden rounded-[32px] border border-white bg-white/30 p-6"
+      className="relative flex h-[890px] w-full animate-card-in flex-col items-start overflow-hidden rounded-[32px] border border-white bg-white/30 p-6 opacity-0"
+      style={{ animationDelay: `${delay}ms` }}
     >
+      <AiGeneratedGlow delay={delay} showSaber={false} glowOpacity={0.28} />
+
       <div className="flex h-10 w-full items-center justify-between gap-8">
         <h2 className="text-[24px] tracking-[-0.24px] text-black">
           Top priorities
@@ -128,7 +133,7 @@ export default function TopPriorities() {
                 )}
                 <span>{tab.label}</span>
                 <span
-                  className={`flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] text-text-secondary transition-colors ${
+                  className={`ml-1 flex size-6 items-center justify-center rounded-full text-xs tracking-[-0.12px] text-text-secondary transition-colors ${
                     isActive ? "bg-base-200" : "bg-white"
                   }`}
                 >
@@ -196,12 +201,15 @@ export default function TopPriorities() {
                   {row.description}
                 </p>
               </div>
-              <Button hierarchy={row.button.hierarchy} className="shrink-0">
-                {row.button.label}
-                {row.button.chevron && (
-                  <NowIcon icon="caret-down-outline" size="sm" />
-                )}
-              </Button>
+              {row.button.chevron ? (
+                <ButtonSplit hierarchy={row.button.hierarchy} className="shrink-0">
+                  {row.button.label}
+                </ButtonSplit>
+              ) : (
+                <Button hierarchy={row.button.hierarchy} className="shrink-0">
+                  {row.button.label}
+                </Button>
+              )}
             </div>
           </div>
         ))}

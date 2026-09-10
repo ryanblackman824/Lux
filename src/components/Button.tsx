@@ -1,9 +1,9 @@
 import type { ButtonHTMLAttributes } from "react";
 
 // Ryan Playground 2K26 "button" component (node 314:16722) — full hierarchy x state matrix.
-type ButtonHierarchy = "primary" | "secondary" | "tertiary" | "ghost" | "accent";
+export type ButtonHierarchy = "primary" | "secondary" | "tertiary" | "ghost" | "accent";
 
-const HIERARCHIES: Record<ButtonHierarchy, string> = {
+export const HIERARCHIES: Record<ButtonHierarchy, string> = {
   primary:
     "bg-neutral-900 text-white hover:bg-neutral-700 active:bg-neutral-600 disabled:bg-neutral-400 disabled:text-neutral-600",
   secondary:

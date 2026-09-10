@@ -20,9 +20,37 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "icon-spin-in": {
+          "0%": { transform: "rotate(-90deg) scale(0.8)" },
+          "100%": { transform: "rotate(0deg) scale(1)" },
+        },
+        "word-in": {
+          "0%": { opacity: "0", color: "var(--color-accent)" },
+          "35%": { opacity: "1", color: "var(--color-accent)" },
+          "100%": { opacity: "1", color: "#000" },
+        },
+        "card-in": {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "ai-glow-in": {
+          "0%": { opacity: "0", transform: "scale(0.85)" },
+          "8%": { opacity: "1", transform: "scale(1)" },
+          "100%": { opacity: "0", transform: "scale(1.15)" },
+        },
+        "ai-saber-in": {
+          "0%": { opacity: "0", backgroundPosition: "0% 0%" },
+          "8%": { opacity: "1" },
+          "100%": { opacity: "0", backgroundPosition: "200% 200%" },
+        },
       },
       animation: {
         "shadow-in": "shadow-in 700ms cubic-bezier(0.16,1,0.3,1) 250ms both",
+        "icon-spin-in": "icon-spin-in 450ms cubic-bezier(0.21,0.64,0.52,1) forwards",
+        "word-in": "word-in 300ms linear forwards",
+        "card-in": "card-in 350ms cubic-bezier(0.16,1,0.3,1) forwards",
+        "ai-glow-in": "ai-glow-in 3000ms ease-out forwards",
+        "ai-saber-in": "ai-saber-in 3000ms ease-out forwards",
       },
       colors: {
         primary: {

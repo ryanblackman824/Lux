@@ -2,6 +2,7 @@ import { useState } from "react";
 import NowIcon from "./NowIcon";
 import Button from "./Button";
 import ButtonIconic from "./ButtonIconic";
+import ButtonSplit from "./ButtonSplit";
 import Pill, { type PillTone } from "./Pill";
 
 type Priority = "1 - Critical" | "2 - High" | "3 - Moderate" | "4 - Low";
@@ -116,6 +117,33 @@ const GROUPS: Group[] = [
         initials: "BA",
         state: "Resolved",
       },
+      {
+        number: "INC0012355",
+        opened: "2026-01-05 14:02",
+        description: "VPN keeps disconnecting throughout the day",
+        priority: "3 - Moderate",
+        assignee: "Beth Anglin",
+        initials: "BA",
+        state: "New",
+      },
+      {
+        number: "INC0012356",
+        opened: "2026-01-06 08:47",
+        description: "Monitor not detected after docking",
+        priority: "4 - Low",
+        assignee: "Beth Anglin",
+        initials: "BA",
+        state: "On hold",
+      },
+      {
+        number: "INC0012357",
+        opened: "2026-01-06 13:19",
+        description: "Shared drive permissions need updating",
+        priority: "2 - High",
+        assignee: "Beth Anglin",
+        initials: "BA",
+        state: "In progress",
+      },
     ],
   },
   {
@@ -158,16 +186,24 @@ const GROUPS: Group[] = [
         initials: "DL",
         state: "Resolved",
       },
+      {
+        number: "INC0012358",
+        opened: "2026-01-08 09:21",
+        description: "Second monitor flickering intermittently",
+        priority: "3 - Moderate",
+        assignee: "David Lou",
+        initials: "DL",
+        state: "In progress",
+      },
     ],
   },
 ];
 
 function FilterChip({ children }: { children: React.ReactNode }) {
   return (
-    <Button hierarchy="tertiary" className="gap-2 pl-4 pr-2">
+    <ButtonSplit hierarchy="tertiary">
       {children}
-      <NowIcon icon="caret-down-outline" size="xs" />
-    </Button>
+    </ButtonSplit>
   );
 }
 
@@ -201,10 +237,11 @@ function GroupHeaderRow({
         </button>
       </div>
       {open &&
-        group.rows.map((row) => (
+        group.rows.map((row, i) => (
           <CaseTableRow
             key={row.number}
             row={row}
+            isLastInGroup={i === group.rows.length - 1}
             onOpenRecord={
               row.number === "INC0012345" ? onOpenRecord : undefined
             }
@@ -216,13 +253,19 @@ function GroupHeaderRow({
 
 function CaseTableRow({
   row,
+  isLastInGroup = false,
   onOpenRecord,
 }: {
   row: CaseRow;
+  isLastInGroup?: boolean;
   onOpenRecord?: () => void;
 }) {
   return (
-    <div className="flex w-full items-stretch border-b border-neutral-200 last:border-b-0">
+    <div
+      className={`flex w-full items-stretch hover:bg-black/5 ${
+        isLastInGroup ? "" : "border-b border-base-300"
+      }`}
+    >
       <div className="flex w-[112px] shrink-0 items-center gap-2 px-3 py-2">
         <span className="size-6 shrink-0" />
         <button
@@ -233,7 +276,7 @@ function CaseTableRow({
           <NowIcon icon="pencil-outline" size="sm" />
         </button>
         <span className="flex size-6 shrink-0 items-center justify-center">
-          <span className="size-4 rounded-sm border border-neutral-500 bg-neutral-100" />
+          <span className="size-4 rounded-[4px] border border-neutral-500 bg-neutral-100" />
         </span>
       </div>
       <div className="flex min-w-0 flex-1 items-center px-3 py-2.5">
@@ -384,11 +427,10 @@ export default function ListPage({
           <ButtonIconic hierarchy="tertiary" aria-label="Preferences">
             <NowIcon icon="sliders-vertical-outline" size="sm" />
           </ButtonIconic>
-          <Button hierarchy="tertiary" className="gap-2 px-3">
+          <ButtonSplit hierarchy="tertiary">
             <NowIcon icon="grid-four-outline" size="sm" />
             Grid
-            <NowIcon icon="caret-down-outline" size="sm" />
-          </Button>
+          </ButtonSplit>
           <Button hierarchy="primary">New</Button>
           <ButtonIconic hierarchy="tertiary" aria-label="More actions">
             <NowIcon icon="ellipsis-v-outline" size="sm" />
@@ -396,7 +438,7 @@ export default function ListPage({
         </div>
       </div>
 
-      <div className="flex w-full items-start justify-between pt-[26px]">
+      <div className="flex w-full items-start justify-between pt-6">
         <div className="flex flex-wrap items-center gap-2">
           <FilterChip>Priority: 1 - Critical, 3 - Moderate</FilterChip>
           <FilterChip>Opened: 2026-01-03 - 2026-01-18</FilterChip>
@@ -407,28 +449,19 @@ export default function ListPage({
           </Button>
         </div>
         <div className="flex items-center gap-2">
-          <Button hierarchy="ghost" className="gap-2 px-3">
+          <ButtonSplit hierarchy="ghost">
             <NowIcon icon="arrow-up-down-outline" size="sm" />
             2 sorts
-            <NowIcon icon="caret-down-outline" size="sm" />
-          </Button>
-          <button
-            type="button"
-            className="group flex h-8 items-center overflow-hidden rounded-full bg-neutral-50 text-ink transition-colors hover:bg-neutral-700 hover:text-white active:bg-neutral-600 active:text-white"
-          >
-            <span className="flex h-full items-center gap-2 pl-4 pr-2 text-sm tracking-[-0.14px]">
-              <NowIcon icon="group-lines-outline" size="sm" />
-              Assigned to
-            </span>
-            <span className="flex h-full items-center border-l border-neutral-400/30 pl-1 pr-3 group-hover:border-white/30">
-              <NowIcon icon="caret-down-outline" size="xs" />
-            </span>
-          </button>
+          </ButtonSplit>
+          <ButtonSplit hierarchy="tertiary" caretLabel="Assigned to options">
+            <NowIcon icon="group-lines-outline" size="sm" />
+            Assigned to
+          </ButtonSplit>
         </div>
       </div>
 
-      <div className="mt-[44px] flex w-full min-w-0 flex-1 flex-col overflow-hidden rounded-3xl border border-white bg-white/30">
-        <div className="flex w-full items-stretch border-b border-neutral-200">
+      <div className="mt-3 flex w-full min-w-0 flex-1 flex-col overflow-hidden rounded-[32px] border border-white bg-white/30">
+        <div className="flex w-full items-stretch">
           <div className="flex w-[112px] shrink-0 items-center gap-2 px-3 py-2">
             <span className="flex size-6 shrink-0 items-center justify-center">
               <NowIcon icon="caret-right-outline" size="sm" />
@@ -437,7 +470,7 @@ export default function ListPage({
               <NowIcon icon="magnifying-glass-filter-outline" size="sm" />
             </span>
             <span className="flex size-6 shrink-0 items-center justify-center">
-              <span className="size-4 rounded-sm border border-neutral-500 bg-neutral-100" />
+              <span className="size-4 rounded-[4px] border border-neutral-500 bg-neutral-100" />
             </span>
           </div>
           <div className="flex min-w-0 flex-1 items-center px-3 py-2.5">
@@ -459,7 +492,7 @@ export default function ListPage({
           ))}
         </div>
 
-        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto pt-3">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
           {sortedGroups.map((group) => (
             <GroupHeaderRow
               key={group.assignee}
@@ -471,8 +504,8 @@ export default function ListPage({
 
         <div className="flex w-full flex-col items-start gap-2.5 px-3 pb-3">
           <div className="h-1 w-[298px] rounded-full bg-neutral-500" />
-          <div className="flex w-full items-center justify-center rounded-full bg-white px-3 py-2.5 shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)]">
-            <div className="flex w-full items-center justify-between px-4 py-2">
+          <div className="flex w-full items-center justify-center rounded-full bg-white px-3 shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)]">
+            <div className="flex w-full items-center justify-between px-3 py-2">
               <p className="text-sm tracking-[-0.14px] text-[#767676]">
                 Showing 1-{totalCount} of {totalCount}
               </p>

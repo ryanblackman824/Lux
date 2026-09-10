@@ -3,6 +3,9 @@ import NowIcon from "./NowIcon";
 import SparkleIcon from "./SparkleIcon";
 import Button from "./Button";
 import Pill from "./Pill";
+import AiGeneratedGlow from "./AiGeneratedGlow";
+import collaboratorAvatar1 from "../assets/collaborator-avatar-1.png";
+import collaboratorAvatar2 from "../assets/collaborator-avatar-2.png";
 
 const TABS = ["Mission brief", "Next best action"] as const;
 
@@ -257,14 +260,23 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
                 ITS
               </div>
               <div className="flex flex-col items-start justify-center gap-1">
-                <button
-                  type="button"
-                  onClick={onBack}
-                  className="flex items-center gap-1 text-xs tracking-[-0.12px] text-blue-700 hover:underline"
-                >
-                  Inventory
-                  <NowIcon icon="chevron-down-outline" size="xs" className="-rotate-90" />
-                </button>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={onBack}
+                    className="flex items-center gap-1 text-xs tracking-[-0.12px] text-blue-700 hover:underline"
+                  >
+                    Inventory
+                    <NowIcon icon="chevron-down-outline" size="xs" className="-rotate-90" />
+                  </button>
+                  <button
+                    type="button"
+                    className="flex size-5 items-center justify-center rounded-full hover:bg-black/5"
+                    aria-label="More"
+                  >
+                    <NowIcon icon="ellipsis-v-outline" size="xs" className="text-neutral-700" />
+                  </button>
+                </div>
                 <div className="flex items-center gap-3">
                   <p className="text-lg tracking-[-0.18px] text-black">
                     VPN disconnecting after Windows update
@@ -333,12 +345,16 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
               <div className="flex flex-col gap-1">
                 <p className="text-sm text-black">Collaborators</p>
                 <div className="flex items-center">
-                  <span className="-mr-1 flex size-5 items-center justify-center rounded-full border border-[#f0efec] bg-neutral-600 text-[10px] text-white">
-                    RB
-                  </span>
-                  <span className="-mr-1 flex size-5 items-center justify-center rounded-full border border-[#f0efec] bg-neutral-500 text-[10px] text-white">
-                    AK
-                  </span>
+                  <img
+                    src={collaboratorAvatar1}
+                    alt=""
+                    className="-mr-1 size-5 rounded-full border border-[#f0efec] object-cover"
+                  />
+                  <img
+                    src={collaboratorAvatar2}
+                    alt=""
+                    className="-mr-1 size-5 rounded-full border border-[#f0efec] object-cover"
+                  />
                   <span className="flex size-5 items-center justify-center rounded-full border border-[#f0efec] bg-white text-[10px] text-text-secondary">
                     +2
                   </span>
@@ -378,7 +394,8 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
       </div>
 
       {/* Mission brief card */}
-      <div className="mt-6 flex w-full flex-col items-start rounded-[32px] border border-white bg-white/30">
+      <div className="relative mt-6 flex w-full flex-col items-start overflow-hidden rounded-[32px] border border-white bg-white/30">
+        <AiGeneratedGlow />
         <div className="flex w-full items-center justify-between px-6 pt-6">
           <div className="relative flex items-center rounded-full bg-background-tertiary p-1.5">
             {TABS.map((tab) => (
@@ -395,6 +412,18 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
                 {tab}
               </button>
             ))}
+          </div>
+          <div className="flex items-center gap-3 text-sm text-text-tertiary">
+            <button
+              type="button"
+              className="flex items-center gap-1.5 hover:text-text-secondary"
+              aria-label="Refresh"
+            >
+              <NowIcon icon="refresh-outline" size="xs" />
+              Updated 2 min ago
+            </button>
+            <NowIcon icon="circle-info-outline" size="sm" />
+            <NowIcon icon="chevron-down-outline" size="sm" className="-rotate-90" />
           </div>
         </div>
 
@@ -440,7 +469,7 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
               Show more
             </button>
           </div>
-          <div className="flex shrink-0 items-center gap-2 pt-6 text-sm text-text-tertiary">
+          <div className="flex shrink-0 items-center gap-2 self-end text-sm text-text-tertiary">
             <SparkleIcon className="size-4 text-text-tertiary" />
             Generated by AI. Check for accuracy.
           </div>
@@ -453,25 +482,31 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
         <div className="flex min-w-0 flex-1 flex-col items-start rounded-[32px] border border-white bg-white/30">
           <div className="flex w-full items-center justify-between px-8 py-6">
             <div className="relative flex items-center rounded-full bg-background-tertiary p-1.5">
-              <span className="relative z-10 flex h-8 items-center gap-2 rounded-full bg-white px-3 text-sm text-black shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)]">
+              <span className="relative z-10 flex h-8 items-center rounded-full bg-white px-3 text-sm text-black shadow-[0px_1px_1px_rgba(0,0,0,0.1),0px_1px_1px_rgba(0,0,0,0.1)]">
                 Next best action
-                <SparkleIcon className="size-3 text-accent" />
               </span>
+              <button
+                type="button"
+                className="flex size-8 items-center justify-center rounded-full hover:bg-black/5"
+                aria-label="Add"
+              >
+                <NowIcon icon="plus-outline" size="sm" />
+              </button>
             </div>
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 className="flex size-8 items-center justify-center rounded-full hover:bg-black/5"
-                aria-label="Thumbs up"
+                aria-label="Info"
               >
-                <NowIcon icon="circle-question-outline" size="sm" className="text-neutral-700" />
+                <NowIcon icon="circle-info-outline" size="sm" className="text-neutral-700" />
               </button>
               <button
                 type="button"
                 className="flex size-8 items-center justify-center rounded-full hover:bg-black/5"
-                aria-label="More"
+                aria-label="Open"
               >
-                <NowIcon icon="ellipsis-v-outline" size="sm" className="text-neutral-700" />
+                <NowIcon icon="arrow-up-right-outline" size="sm" className="text-neutral-700" />
               </button>
             </div>
           </div>
@@ -483,7 +518,7 @@ export default function RecordPage({ onBack }: { onBack: () => void }) {
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-sm text-text-secondary">
                     1
                   </span>
-                  <span className="w-0.5 flex-1 rounded-full bg-[#00834f]" />
+                  <span className="w-0.5 flex-1 rounded-full bg-neutral-300" />
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col items-start gap-4">
                   <div className="flex w-full flex-col items-start gap-2">
