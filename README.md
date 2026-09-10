@@ -1,6 +1,6 @@
-# my-prototype
+# Lux Prototype
 
-A front-end prototype of a ServiceNow-style workspace, built to match the "Ryan Playground 2K26" Figma design pixel-for-pixel. React + TypeScript + Vite + Tailwind CSS, no backend — all data is mocked in-component.
+A front end prototype of a ServiceNow style workspace, built to match the Figma design pixel-for-pixel. React + TypeScript + Vite + Tailwind CSS, no backend — all data is mocked in-component.
 
 **Live demo:** https://my-prototype-ashen.vercel.app
 
